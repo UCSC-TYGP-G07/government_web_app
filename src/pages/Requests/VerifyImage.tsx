@@ -19,7 +19,9 @@ const VerifyImage: React.FC = () => {
   };
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
+    <Navbar showProfileButton={false} />
+
     <div>
     <Flex direction="column" align="center" my={36}>
     <Title order={1} align="center">

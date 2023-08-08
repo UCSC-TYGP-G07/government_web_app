@@ -2,7 +2,11 @@ import { Container, Image, Flex, Menu, Button, Avatar } from "@mantine/core";
 import {FaAngleDown} from "react-icons/fa6";
 import logo from "../assets/logo-no-background.png";
 
-function Navbar(){
+interface NavbarProps {
+    showProfileButton: boolean;
+  }
+
+function Navbar({ showProfileButton }: NavbarProps){
     return (
       <Flex h={64} align='center' justify='space-between' bg='#758BFD'>
         {/* Logo container */}
@@ -26,8 +30,27 @@ function Navbar(){
                    </Menu.Dropdown>
                </Menu>
            </Container>
+
+           {showProfileButton && (
+          <Container>
+            <Menu>
+              <Menu.Target>
+                {/* Example: Profile button */}
+                <Avatar radius='xl'>SA</Avatar>
+
+              </Menu.Target>
+              <Menu.Dropdown>
+                {/* Profile menu items */}
+                <Menu.Label>User's Name</Menu.Label>
+                <Menu.Item>User account page</Menu.Item>
+                <Menu.Item>Settings</Menu.Item>
+                <Menu.Item>Sign out</Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
+          </Container>
+        )}
             {/* Sign in button */}
-            <Container>
+            {/* <Container>
                 <Menu>
                     <Menu.Target>
                        <Avatar radius='xl'>SA</Avatar>
@@ -39,7 +62,9 @@ function Navbar(){
                         <Menu.Item>Sign out</Menu.Item>
                     </Menu.Dropdown>
                 </Menu>
-            </Container>
+            </Container> */}
+
+
         </Flex>
       </Flex>
     );

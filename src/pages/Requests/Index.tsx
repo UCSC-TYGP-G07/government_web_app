@@ -52,15 +52,19 @@ function Index() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
+    <Navbar showProfileButton={true} />
 
-      <Flex direction="column" align="center" my={36}>
+
+      <Flex direction="column" align="center" my={70}>
         <Title order={1} align="center">
           Requests
         </Title>
+        </Flex>
         <br />
-        <Center>
+        {/* <Center style={{ justifyContent: "flex-start" }}> */}
           <SegmentedControl
+          style={{ marginLeft: "430px" }}
             color="blue"
             data={[
               { label: "Normal", value: "normal" },
@@ -69,7 +73,7 @@ function Index() {
             value={segValue}
             onChange={handleTabChange}
           />
-        </Center>
+        {/* </Center> */}
         <Flex
           align="center"
           justify="center"
@@ -116,7 +120,7 @@ function Index() {
             </tbody>
           </table>
         </Flex>
-      </Flex>
+      
       {/* <Bottombar /> */}
       <Bottombar />
     </>

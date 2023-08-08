@@ -1,38 +1,3 @@
-// import { TextInput, Title, Text, Button, Center, Flex, Select } from "@mantine/core";
-// import Navbar from "../components/Navbar";
-// import {Link, useNavigate} from "react-router-dom";
-// import Bottombar from "../components/Bottombar";
-// import {useViewportSize} from "@mantine/hooks";
-
-// function Signin(){
-//     const navigate = useNavigate();
-//     const { width, height } = useViewportSize();
-
-//     return (
-//         <>
-//             <Navbar />
-//             {/* Main container which contains Sign in page */}
-//             <Flex direction='column' align='center' justify='center' w={width * 0.4} h={height - 140} py='auto' mx='auto' >
-//                 <Title order={1} align='center' my={16}>Sign in to your account</Title>
-//                 <TextInput w={320} my={12} mx='auto' label='Email address' type='email' placeholder='sunilperera@gmail.com' />
-//                 <TextInput w={320} my={12} mx='auto' label='Password' type='password'/>
-//                 {/* <Select w={320} my={12} mx='auto' label='Select Department' placeholder='Select Department' data={['Passport Department', 'Driving License Department', 'NIC Department']} /> */}
-//                 <Text size={14} ml='auto' align='right' w='full'>
-//                     <Link to='/'>Forgot Password?</Link>
-//                 </Text>
-//                 <Text size={14} align='center'>No account?<Link to='/'>Register now</Link></Text>
-//                 <Center my={12}>
-//                     <Button variant='filled' color='#758BFD' onClick={() => {navigate('/requests')}}>Sign in</Button>
-//                 </Center>
-//             </Flex>
-//             <Bottombar />
-//         </>
-//     );
-// }
-
-// export default Signin;
-
-
 import React, { useState } from "react";
 import {
   TextInput,
@@ -100,18 +65,20 @@ function Signin() {
 
   return (
     <>
-      <Navbar />
+    <Navbar showProfileButton={false} />
+
+      {/* <Navbar /> */}
       {/* Main container which contains Sign in page */}
       <Flex
         direction="column"
         align="center"
         justify="center"
         w={width * 0.4}
-        h={height - 140}
+        h={height - 200}
         py="auto"
         mx="auto"
       >
-        <Title order={1} align="center" my={16}>
+        <Title order={1} align="center" my={40}>
           Sign in to your account
         </Title>
         
@@ -138,12 +105,16 @@ function Signin() {
           onChange={handleChange}
           error={errors.password}
         />
-        <Text size={14} ml="auto" align="right" w="full">
+        {/* <Text size={14} ml="auto" align="right" w="full">
           <Link to="/">Forgot Password?</Link>
-        </Text>
-        <Text size={14} align="center">
-          No account?<Link to="/">Register now</Link>
-        </Text>
+        </Text> */}
+        <Flex justify="space-between" w="320px" my={12} mx="auto">
+          {/* The "Forgot Password?" link with custom styling */}
+          <Text size={14} align="right" style={{ marginLeft: "200px" }}>
+            <Link to="/">Forgot Password?</Link>
+          </Text>
+          </Flex>
+        
         <Center my={12}>
           {/* Use Link to wrap the button */}
           {/* <Link to="/requests"> */}

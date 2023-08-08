@@ -27,7 +27,9 @@ const Verifyapplication: React.FC = () => {
 
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
+    <Navbar showProfileButton={false} />
+
 
     <div className="App">
     <Flex direction="column" align="center" my={26}>

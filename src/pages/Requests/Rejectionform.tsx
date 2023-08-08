@@ -17,7 +17,9 @@ const RejectionForm: React.FC = () => {
 
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
+    <Navbar showProfileButton={false} />
+
     <form onSubmit={handleSubmit} style={{width: '70%', margin: '0 auto'}}>
     <br /><br />
       <Textarea
