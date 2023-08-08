@@ -6,6 +6,7 @@
     "@emotion/react": "^11.11.1",
     "@mantine/core": "^6.0.15",
     "@mantine/dropzone": "^6.0.15",
+    "@mantine/form": "^6.0.17",
     "@mantine/hooks": "^6.0.15",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -45,5 +46,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

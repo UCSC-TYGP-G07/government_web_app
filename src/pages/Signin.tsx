@@ -1,32 +1,163 @@
-import { TextInput, Title, Text, Button, Center, Flex } from "@mantine/core";
+// import { TextInput, Title, Text, Button, Center, Flex, Select } from "@mantine/core";
+// import Navbar from "../components/Navbar";
+// import {Link, useNavigate} from "react-router-dom";
+// import Bottombar from "../components/Bottombar";
+// import {useViewportSize} from "@mantine/hooks";
+
+// function Signin(){
+//     const navigate = useNavigate();
+//     const { width, height } = useViewportSize();
+
+//     return (
+//         <>
+//             <Navbar />
+//             {/* Main container which contains Sign in page */}
+//             <Flex direction='column' align='center' justify='center' w={width * 0.4} h={height - 140} py='auto' mx='auto' >
+//                 <Title order={1} align='center' my={16}>Sign in to your account</Title>
+//                 <TextInput w={320} my={12} mx='auto' label='Email address' type='email' placeholder='sunilperera@gmail.com' />
+//                 <TextInput w={320} my={12} mx='auto' label='Password' type='password'/>
+//                 {/* <Select w={320} my={12} mx='auto' label='Select Department' placeholder='Select Department' data={['Passport Department', 'Driving License Department', 'NIC Department']} /> */}
+//                 <Text size={14} ml='auto' align='right' w='full'>
+//                     <Link to='/'>Forgot Password?</Link>
+//                 </Text>
+//                 <Text size={14} align='center'>No account?<Link to='/'>Register now</Link></Text>
+//                 <Center my={12}>
+//                     <Button variant='filled' color='#758BFD' onClick={() => {navigate('/requests')}}>Sign in</Button>
+//                 </Center>
+//             </Flex>
+//             <Bottombar />
+//         </>
+//     );
+// }
+
+// export default Signin;
+
+
+import React, { useState } from "react";
+import {
+  TextInput,
+  Title,
+  Text,
+  Button,
+  Center,
+  Flex,
+} from "@mantine/core";
 import Navbar from "../components/Navbar";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Bottombar from "../components/Bottombar";
-import {useViewportSize} from "@mantine/hooks";
+import { useViewportSize } from "@mantine/hooks";
 
-function Signin(){
-    const navigate = useNavigate();
-    const { width, height } = useViewportSize();
+function Signin() {
+  const navigate = useNavigate();
+  const { width, height } = useViewportSize();
 
-    return (
-        <>
-            <Navbar />
-            {/* Main container which contains Sign in page */}
-            <Flex direction='column' align='center' justify='center' w={width * 0.4} h={height - 96} py='auto' mx='auto' >
-                <Title order={1} align='center' my={16}>Sign in to your account</Title>
-                <TextInput w={320} my={12} mx='auto' label='Email address' type='email' placeholder='sunilperera@gmail.com' />
-                <TextInput w={320} my={12} mx='auto' label='Password' type='password'/>
-                <Text size={14} ml='auto' align='right' w='full'>
-                    <Link to='/'>Forgot Password?</Link>
-                </Text>
-                <Text size={14} align='center'>No account?<Link to='/'>Register now</Link></Text>
-                <Center my={12}>
-                    <Button variant='filled' color='primary' onClick={() => {navigate('/reference')}}>Sign in</Button>
-                </Center>
-            </Flex>
-            <Bottombar />
-        </>
-    );
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
+
+  function validateForm() {
+    const newErrors = { email: "", password: "" };
+
+    if (!formData.email) {
+      newErrors.email = "Email address is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Invalid email address";
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    }
+
+    setErrors(newErrors);
+
+    // Return true if there are no errors, false otherwise
+    return Object.values(newErrors).every((error) => error === "");
+  }
+
+  function handleSubmit() {
+    const isValid = validateForm();
+
+    if (isValid) {
+      // Perform form submission logic here
+      console.log("Form is valid. Submitting...");
+      // Replace the above console.log with your logic to handle form submission
+    }
+  }
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  }
+
+  return (
+    <>
+      <Navbar />
+      {/* Main container which contains Sign in page */}
+      <Flex
+        direction="column"
+        align="center"
+        justify="center"
+        w={width * 0.4}
+        h={height - 140}
+        py="auto"
+        mx="auto"
+      >
+        <Title order={1} align="center" my={16}>
+          Sign in to your account
+        </Title>
+        
+        <TextInput
+          w={320}
+          my={12}
+          mx="auto"
+          label="Email address"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          error={errors.email}
+          placeholder="sunilperera@gmail.com"
+        />
+        <TextInput
+          w={320}
+          my={12}
+          mx="auto"
+          label="Password"
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          error={errors.password}
+        />
+        <Text size={14} ml="auto" align="right" w="full">
+          <Link to="/">Forgot Password?</Link>
+        </Text>
+        <Text size={14} align="center">
+          No account?<Link to="/">Register now</Link>
+        </Text>
+        <Center my={12}>
+          {/* Use Link to wrap the button */}
+          {/* <Link to="/requests"> */}
+            <Button variant="filled" color="#758BFD" onClick={handleSubmit}>
+            <Link to="/requests" style={{ textDecoration: "none", color: "white" }}>Sign in</Link>
+            </Button>
+          {/* </Link> */}
+        </Center>
+      </Flex>
+      <Bottombar />
+    </>
+  );
 }
 
 export default Signin;
+
+

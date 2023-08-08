@@ -4,7 +4,7 @@ import logo from "../assets/logo-no-background.png";
 
 function Navbar(){
     return (
-      <Flex h={64} align='center' justify='space-between' bg='primary.0'>
+      <Flex h={64} align='center' justify='space-between' bg='#758BFD'>
         {/* Logo container */}
         <Flex ml={24} p={12}>
             <Image maw={36} src={logo} alt='OneId logo'/>
@@ -30,10 +30,10 @@ function Navbar(){
             <Container>
                 <Menu>
                     <Menu.Target>
-                       <Avatar radius='xl'>MI</Avatar>
+                       <Avatar radius='xl'>SA</Avatar>
                     </Menu.Target>
                     <Menu.Dropdown>
-                        <Menu.Label>Mohamed Izzath</Menu.Label>
+                        <Menu.Label>Shamindi Anuththara</Menu.Label>
                         <Menu.Item>User account page</Menu.Item>
                         <Menu.Item>Settings</Menu.Item>
                         <Menu.Item>Sign out</Menu.Item>
