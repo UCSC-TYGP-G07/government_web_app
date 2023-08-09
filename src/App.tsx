@@ -2,6 +2,7 @@ import React from 'react';
 import { MantineProvider } from "@mantine/core";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Signin from "./pages/Signin";
+import Dashboard from "./pages/Requests/dashboard";
 import RequestIndex from "./pages/Requests/Index";
 import theme from "./theme";
 import Form from './pages/Requests/Viewform';
@@ -27,6 +28,7 @@ function App() {
 /* Adding browser based routing */
 const router = createBrowserRouter([
     {path: '/', element: <Signin />},
+    {path: '/Dashboard', element: <Dashboard/>},
     {path: '/requests', element: <RequestIndex />},
     {path: '/form', element: <Form />},
     {path: '/verifyimage', element: <VerifyImage />},

@@ -119,7 +119,7 @@ function Signin() {
           {/* Use Link to wrap the button */}
           {/* <Link to="/requests"> */}
             <Button variant="filled" color="#758BFD" onClick={handleSubmit}>
-            <Link to="/requests" style={{ textDecoration: "none", color: "white" }}>Sign in</Link>
+            <Link to="/dashboard" style={{ textDecoration: "none", color: "white" }}>Sign in</Link>
             </Button>
           {/* </Link> */}
         </Center>
