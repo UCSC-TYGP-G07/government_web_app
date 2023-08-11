@@ -9,6 +9,7 @@ import Form from './pages/Requests/Viewform';
 import VerifyImage from './pages/Requests/VerifyImage';
 import VerifyApplication from './pages/Requests/Verifyapplication';
 import RejectionForm from './pages/Requests/Rejectionform';
+import IdentificationCard from './pages/Requests/IdentificationCard';
 
 function App() {
   // const handleFormSubmit = (rejectionNote: string) => {
@@ -28,12 +29,13 @@ function App() {
 /* Adding browser based routing */
 const router = createBrowserRouter([
     {path: '/', element: <Signin />},
-    {path: '/Dashboard', element: <Dashboard/>},
+    {path: '/dashboard', element: <Dashboard/>},
     {path: '/requests', element: <RequestIndex />},
     {path: '/form', element: <Form />},
     {path: '/verifyimage', element: <VerifyImage />},
     {path: '/verifyapplication', element: <VerifyApplication />},
-    {path: '/rejectionform', element: <RejectionForm />}
+    {path: '/rejectionform', element: <RejectionForm />},
+    {path: '/identificationcard', element: <IdentificationCard />}
 ]);
 
 export default App;

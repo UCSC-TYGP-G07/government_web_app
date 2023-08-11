@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PDFViewer from '../../components/Pdfviewer';
 import CommentBox from '../../components/Commentbox';
-import { Button, Flex, Title } from '@mantine/core';
+import { Button, Flex, Title, Menu, Container, Avatar } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../components/Navbar";
 import Bottombar from "../../components/Bottombar";
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored.tsx';
 
 
 const Verifyapplication: React.FC = () => {
@@ -20,7 +21,7 @@ const Verifyapplication: React.FC = () => {
   useEffect(() => {
     // Simulating fetching the PDF URL from the database after 1 second
     setTimeout(() => {
-      const fetchedPdfUrl = 'https://www.cs.utoronto.ca/~fidler/teaching/2015/slides/CSC2523/CNN-tutorial.pdf'; // Replace with the actual fetched URL
+      const fetchedPdfUrl = 'https://drp.gov.lk/Download/Application%20DRP.pdf'; // Replace with the actual fetched URL
       setPdfUrl(fetchedPdfUrl);
     }, 1000);
   }, []);
@@ -28,16 +29,44 @@ const Verifyapplication: React.FC = () => {
   return (
     <>
     {/* <Navbar /> */}
-    <Navbar showProfileButton={false} />
+    {/* <Navbar showProfileButton={false} /> */}
+    <NavbarSimpleColored />
 
+    <Container style={{ position: 'relative' }}>
+        <Menu>
+          <Menu.Target>
+            {/* Example: Profile button */}
+            <Avatar
+              radius="xl"
+              color='#27187E'
+              style={{
+                position: 'absolute',
+                top: '20px',
+                right: '-450px',
+                cursor: 'pointer',
+                
+              }}
+            >
+              SA
+            </Avatar>
+          </Menu.Target>
+          <Menu.Dropdown>
+            {/* Profile menu items */}
+            <Menu.Label>User's Name</Menu.Label>
+            <Menu.Item>User account page</Menu.Item>
+            <Menu.Item>Settings</Menu.Item>
+            <Menu.Item>Sign out</Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
+      </Container>
 
     <div className="App">
-    <Flex direction="column" align="center" my={26}>
-    <Title order={1} align="center">
+    <Flex direction="column" align="center">
+    <Title order={1} align="center" my={60}>
       Check Application
     </Title>
     </Flex>
-      <div className="content-wrapper" style={{width: '80%', margin: '0 auto'}}>
+      <div className="content-wrapper" style={{width: '80%', marginLeft: 330}}>
         {pdfUrl ? ( // Check if the PDF URL is available
           <div className="pdf-viewer">
             <PDFViewer pdfUrl={pdfUrl} />
@@ -50,14 +79,14 @@ const Verifyapplication: React.FC = () => {
         </div>
         <br />
         <div>
-       <Button style={{width: '100px'}} variant='filled' color='#758BFD' onClick={() => {navigate('/verifyapplication')}}>Approve</Button>
+       <Button style={{width: '100px'}} variant='filled' color='#758BFD' onClick={() => {navigate('/identificationcard')}}>Approve</Button>
        <Button style={{marginLeft: '30px', width: '100px'}}  variant='filled' color='#758BFD' onClick={() => {navigate('/rejectionform')}}>Reject</Button>
         
         </div>
       </div>
      
     </div>
-    <Bottombar />
+    {/* <Bottombar /> */}
     </>
   );
 };
