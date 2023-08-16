@@ -70,10 +70,10 @@ function Signin() {
 
   return (
     <>
-    <Flex h={64} align='center' justify='space-between' bg='#758BFD'>
+    <Flex h={64} align='center' justify='space-between' bg='#e9edff'>
          {/* Logo container */}
          <Flex ml={24} p={12}>
-             <Image maw={36} src={logo} alt='OneId logo'/>
+             {/* <Image maw={36} src={logo} alt='OneId logo'/> */}
          </Flex>
 
          {/* Menu Container */}
@@ -97,7 +97,7 @@ function Signin() {
 
 
     {/* <Navbar showProfileButton={false} /> */}
-    <Navbar showProfileButton={true} />
+    {/* <Navbar showProfileButton={true} /> */}
     
 
       {/* <Navbar /> */}

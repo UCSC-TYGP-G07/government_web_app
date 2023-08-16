@@ -1,14 +1,9 @@
 import { useState } from 'react';
 import { createStyles, Navbar, Group, Code, getStylesRef, rem, Flex, Image, Text } from '@mantine/core';
 import {
-  IconBellRinging,
-  IconFingerprint,
-  IconKey,
-  IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
-  IconReceipt2,
-  IconSwitchHorizontal,
+  IconUser,
+  IconHome,
+  IconList,
   IconLogout,
 } from '@tabler/icons-react';
 import { Link, useNavigate } from "react-router-dom";
@@ -42,7 +37,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     textDecoration: 'none',
-    fontSize: 18,
+    fontSize: 17,
     color: theme.white,
     padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.sm,
@@ -85,14 +80,16 @@ const useStyles = createStyles((theme) => ({
 }));
 <br />
 const data = [
-  { link: '/dashboard', label: 'Dashboard', icon: IconBellRinging,  }, // Change the link to the appropriate route
-  { link: '/requests', label: 'Requests', icon: IconReceipt2 }, // Change the link and label as needed
-  { link: '/adduser', label: 'Add User', icon: IconFingerprint }, 
+  { link: '/dashboard', label: 'Dashboard', icon: IconHome }, // Change the link to the appropriate route
+  { link: '/requests', label: 'Requests', icon: IconList }, // Change the link and label as needed
+  { link: '/adduser', label: 'Add User', icon: IconUser }, 
 ];
 
 export function NavbarSimpleColored() {
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Billing');
+const navigate = useNavigate();
+
 
   const links = data.map((item) => (
     <Link
@@ -127,10 +124,13 @@ export function NavbarSimpleColored() {
           <span >Change account</span>
         </a> */}
 
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href="#" className={classes.link} onClick={() => navigate('/')}>
           <IconLogout className={classes.linkIcon} stroke={2} />
           <span>Logout</span>
         </a>
+        {/* <Button variant="filled" color="primary.7" onClick={() => navigate('/form')}>
+                Review
+              </Button> */}
       </Navbar.Section>
     </Navbar>
   );

@@ -36,8 +36,8 @@ const Verifyapplication: React.FC = () => {
 
 
     <div className="App">
-    <Flex direction="column" align="center">
-    <Title order={1} align="center" my={60}>
+    <Flex direction="column" >
+    <Title order={1} my={40} ml={50}>
       Check Application
     </Title>
     </Flex>
@@ -54,8 +54,8 @@ const Verifyapplication: React.FC = () => {
         </div>
         <br />
         <div>
-       <Button style={{width: '100px'}} variant='filled' color='#758BFD' onClick={() => {navigate('/identificationcard')}}>Approve</Button>
-       <Button style={{marginLeft: '30px', width: '100px'}}  variant='filled' color='#758BFD' onClick={() => {navigate('/rejectionform')}}>Reject</Button>
+       <Button style={{width: '100px'}} variant='filled' color="primary.7" onClick={() => {navigate('/identificationcard')}}>Approve</Button>
+       <Button style={{marginLeft: '30px', width: '100px'}}  variant='filled' color="primary.7" onClick={() => {navigate('/rejectionform')}}>Reject</Button>
         
         </div>
       </div>

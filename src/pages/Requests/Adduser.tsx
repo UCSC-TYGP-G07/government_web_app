@@ -19,11 +19,12 @@ const Adduser: React.FC = () => {
 <NavbarSimpleColored />
     {/* <Navbar showProfileButton={true} /> */}
     <Navbar showProfileButton={true} />
-
+<div style={{width: 1000, marginLeft: 600, marginTop: 100}}>
     <Container size="md" mt={50}>
       <Paper
         style={{ maxWidth: 400, margin: '0 auto', padding: '20px' }} // Adjust padding here
-        shadow="xs" 
+        shadow="md" 
+        
       >
         <h2>Add User</h2>
         <TextInput
@@ -48,6 +49,7 @@ const Adduser: React.FC = () => {
               </center>
       </Paper>
     </Container>
+    </div>
     </>
   );
 };

@@ -128,20 +128,20 @@ function Navbar({ showProfileButton  }: NavbarProps) {
               <Image maw={40} src={logo} alt='OneId logo'/>
               <Text ml={15} mb={10} fw={50} mt={7} style={{fontSize: 18, color: '#27187E', fontWeight: 'bold' }}> GOVERNMENT</Text>
           </Flex> 
-            
+          
           </Group>
 
         <Container style={{marginRight: 10, padding: 10}}>
           <Menu>
             <Menu.Target>
               {/* Example: Profile button */}
-              <Avatar radius="lg" color="#fff">
-                SA
+              <Avatar radius="xl" color="primary.7" style={{backgroundColor: 'black'}}>
+                DRP
               </Avatar>
             </Menu.Target>
             <Menu.Dropdown>
               {/* Profile menu items */}
-              <Menu.Label>User's Name</Menu.Label>
+              <Menu.Label> Department for Registration of Persons</Menu.Label>
               <Menu.Item>User Profile</Menu.Item>
             </Menu.Dropdown>
           </Menu>

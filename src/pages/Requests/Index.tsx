@@ -103,7 +103,6 @@ return (
         />
       </Center>
       <Paper style={{padding: 20,
-     
      marginLeft: -95,
      minWidth: 1300,
      display: "flex",
@@ -141,7 +140,7 @@ return (
           <td style={{ padding: '40px 20px 20px', textAlign: 'left' }}>
             <div style={{ marginTop: -25 }}>
               <Button variant="filled" color="primary.7" onClick={() => navigate('/form')}>
-                View More
+                Review
               </Button>
             </div>
           </td>
