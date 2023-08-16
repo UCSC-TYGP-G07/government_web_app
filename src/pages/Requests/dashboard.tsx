@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Card, Table, Group, Text, Button, Menu, Avatar, Image } from '@mantine/core';
-import { NavbarSimpleColored } from '../../components/NavbarSimpleColored.tsx';
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 import Navbar from "../../components/Navbar";
 import chart from "../../assets/Pie Chart.png"
-
-
 
 const Dashboard: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -13,48 +11,14 @@ const Dashboard: React.FC = () => {
     setSidebarOpen((prevOpen) => !prevOpen);
   };
 
-  // const tableData = [
-  //   { nic: 1, name: 'Item 1', type: 'Passport', email: 'abc@gmail.com' },
-  //   { nic: 2, name: 'Item 2', type: 'NIC', email: 'abc@gmail.com' },
-  //   { nic: 3, name: 'Item 3', type: 'Driving Licence', email: 'abc@gmail.com' },
-  //   // Add more items as needed
-  // ];
-
   return (
     <>
-
-<Container style={{ position: 'relative' }}>
-        <Menu>
-          <Menu.Target>
-            {/* Example: Profile button */}
-            <Avatar
-              radius="xl"
-              color='#27187E'
-              
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '-450px',
-                cursor: 'pointer',       
-              }}
-            >
-            SA
-            </Avatar>
-          </Menu.Target>
-          <Menu.Dropdown>
-            {/* Profile menu items */}
-            <Menu.Label>User's Name</Menu.Label>
-            <Menu.Item>User account page</Menu.Item>
-            <Menu.Item>Settings</Menu.Item>
-            <Menu.Item>Sign out</Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
-      </Container>
-
     {/* <Navbar showProfileButton={true} /> */}
-     <div style={{ display: 'flex' }}></div>
       <NavbarSimpleColored />
-      <Container size="sm" style={{ paddingTop: '100px', marginLeft: '310px' }}>
+      
+      <Navbar showProfileButton={true}  />
+
+      <Container size="sm" style={{ paddingTop: '70px', marginLeft: '310px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '50px' }}>
           <Card shadow="xl" padding="md" style={{ height: '250px', width: '350px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', borderRadius: '10px', backgroundColor: '#F1F2F6'  }}>
             <h2>Pending Requests</h2>
@@ -162,9 +126,7 @@ const Dashboard: React.FC = () => {
   </div>
 </div>
 
-</div>
-
-      
+</div>     
       </Container>
     
     </>

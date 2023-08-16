@@ -1,7 +1,8 @@
 import React from "react";
 import { Container, Paper, Text, Title, Badge, Button, Grid, Col, Group, Menu, Avatar } from "@mantine/core";
-import { NavbarSimpleColored } from '../../components/NavbarSimpleColored.tsx';
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 import img from "../../assets/masha.jpeg";
+import Navbar from "../../components/Navbar";
 
 
 
@@ -30,41 +31,17 @@ const IdentificationCard: React.FC<IdentificationCardProps> = ({
 
 <NavbarSimpleColored />
 
-<Container style={{ position: 'relative' }}>
-        <Menu>
-          <Menu.Target>
-            {/* Example: Profile button */}
-            <Avatar
-              radius="xl"
-              color='#27187E'
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '-450px',
-                cursor: 'pointer',
-                
-              }}
-            >
-              SA
-            </Avatar>
-          </Menu.Target>
-          <Menu.Dropdown>
-            {/* Profile menu items */}
-            <Menu.Label>User's Name</Menu.Label>
-            <Menu.Item>User account page</Menu.Item>
-            <Menu.Item>Settings</Menu.Item>
-            <Menu.Item>Sign out</Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
-      </Container>
+{/* <Navbar showProfileButton={true} /> */}
+<Navbar showProfileButton={true}  />
 
-    <Container style={{ display: "flex", flexDirection: "column", alignItems: "center", height: "100vh" }}>
-      <Grid gutter="md" style={{ padding: "20px", marginTop: "100px" }}>
+
+    <Container style={{ display: "flex", flexDirection: "column", alignItems: "center", height: "50vh" }}>
+      <Grid gutter="md" style={{ padding: "20px", marginTop: "50px" }}>
         <Col span={6}>
             <Title order={3} style={{ marginBottom: "20px", marginLeft: "110px" }}>
               Front View
             </Title>
-          <Paper shadow="md" style={{ padding: "20px", textAlign: "center", width: '350px' , height: '500px' , backgroundColor: "#f8f8fa"}}>
+          <Paper shadow="md" style={{ padding: "20px", textAlign: "center", width: '350px' , height: '500px' , backgroundColor: "#F1F2F6"}}>
           <img
           src={img}
           alt="User's Photo"
@@ -83,10 +60,8 @@ const IdentificationCard: React.FC<IdentificationCardProps> = ({
             <Title order={3} style={{ marginBottom: "20px", marginLeft: "110px"  }}>
               Back View
             </Title>
-          <Paper shadow="md"  style={{ padding: "50px", textAlign: 'start', width: '350px' , height: '500px', backgroundColor: "#f8f8fa"}}>
+          <Paper shadow="md"  style={{ padding: "50px", textAlign: 'start', width: '350px' , height: '500px', backgroundColor: "#F1F2F6"}}>
           
-            {/* <Text size="xl">{name}</Text> */}
-            {/* <Text size="sm">NIC: {nic}</Text> */}
             <Text size="md" style={{marginBottom: 20}}> <b>Address:  </b>{address} </Text>
             <Text size="md" style={{marginBottom: 20}}><b>Place of Birth:</b> {placeOfBirth}</Text>
             <Text size="md" style={{marginBottom: 20}}><b>Date of Birth: </b>{dateOfBirth}</Text>
@@ -108,7 +83,7 @@ const IdentificationCard: React.FC<IdentificationCardProps> = ({
           size="lg"
           style={{ marginTop: "20px" }}
         >
-          Share
+          Download
         </Button>
       </Group>
     </Container>

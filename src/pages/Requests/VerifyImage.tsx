@@ -5,15 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from "../../components/Navbar";
 import Bottombar from "../../components/Bottombar";
 import img from "../../assets/masha.jpeg";
-import { NavbarSimpleColored } from '../../components/NavbarSimpleColored.tsx';
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 
 
 const VerifyImage: React.FC = () => {
     const navigate = useNavigate();
 
   const handleNextClick = () => {
-    // Add any logic you need before navigating to the "Otherapplication" page
-    // For example, you can perform data validation or any other checks
 
     // Navigate to the "Otherapplication" page
     navigate('/Otherapplication');
@@ -25,33 +23,9 @@ const VerifyImage: React.FC = () => {
 
     <NavbarSimpleColored />
 
-    <Container style={{ position: 'relative' }}>
-        <Menu>
-          <Menu.Target>
-            {/* Example: Profile button */}
-            <Avatar
-              radius="xl"
-              color='#27187E'
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '-450px',
-                cursor: 'pointer',
-                
-              }}
-            >
-              SA
-            </Avatar>
-          </Menu.Target>
-          <Menu.Dropdown>
-            {/* Profile menu items */}
-            <Menu.Label>User's Name</Menu.Label>
-            <Menu.Item>User account page</Menu.Item>
-            <Menu.Item>Settings</Menu.Item>
-            <Menu.Item>Sign out</Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
-      </Container>
+    {/* <Navbar showProfileButton={true} /> */}
+    <Navbar showProfileButton={true} />
+
 
       
     <div>

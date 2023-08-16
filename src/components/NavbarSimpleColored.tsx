@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
   // },
 
   navbar: {
-    backgroundColor: '#758BFD', // Change this to your desired dark blue color
+    backgroundColor: '#27187E', // Change this to your desired dark blue color
   },
 
   version: {
@@ -32,32 +32,17 @@ const useStyles = createStyles((theme) => ({
     ),
     color: theme.white,
     fontWeight: 700,
+    
+  
   },
-
-  // header: {
-  //   paddingBottom: theme.spacing.md,
-  //   marginBottom: `calc(${theme.spacing.md} * 1.5)`,
-  //   borderBottom: `${rem(1)} solid ${theme.fn.lighten(
-  //     theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background!,
-  //     0.7
-  //   )}`,
-  // },
-
-  // footer: {
-  //   paddingTop: theme.spacing.md,
-  //   marginTop: theme.spacing.md,
-  //   borderTop: `${rem(1)} solid ${theme.fn.lighten(
-  //     theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background!,
-  //     0.1
-  //   )}`,
-  // },
 
   link: {
     ...theme.fn.focusStyles(),
+
     display: 'flex',
     alignItems: 'center',
     textDecoration: 'none',
-    fontSize: 16,
+    fontSize: 18,
     color: theme.white,
     padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.sm,
@@ -82,7 +67,7 @@ const useStyles = createStyles((theme) => ({
   linkIcon: {
     ref: getStylesRef('icon'),
     color: theme.white,
-    opacity: 0.75,
+    opacity: 0.8,
     marginRight: theme.spacing.sm,
   },
 
@@ -98,11 +83,11 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
-
+<br />
 const data = [
   { link: '/dashboard', label: 'Dashboard', icon: IconBellRinging,  }, // Change the link to the appropriate route
   { link: '/requests', label: 'Requests', icon: IconReceipt2 }, // Change the link and label as needed
-  { link: '/add-user', label: 'Add User', icon: IconFingerprint }, 
+  { link: '/adduser', label: 'Add User', icon: IconFingerprint }, 
 ];
 
 export function NavbarSimpleColored() {
@@ -123,24 +108,24 @@ export function NavbarSimpleColored() {
   ));
 
   return (
-    <Navbar style={{ height: '100vh', width: '280px', float: 'left' }}  p="md" className={classes.navbar}>
+    <Navbar style={{ height: '100vh', width: '280px', float: 'left'}}  p="md" className={classes.navbar}>
       <Navbar.Section grow>
-        <Group>
+        {/* <Group>
           
         <Flex ml={1} p={12}>
             <Image maw={50} src={logo} alt='OneId logo'/>
             <Text ml={20} mb={40} fw={50} mt={10} style={{fontSize: 20, color: '#27187E', fontWeight: 'bold' }}> GOVERNMENT</Text>
         </Flex> 
           
-        </Group>
+        </Group> */}
         {links}
       </Navbar.Section>
 
       <Navbar.Section>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        {/* <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconSwitchHorizontal className={classes.linkIcon} stroke={2} />
           <span >Change account</span>
-        </a>
+        </a> */}
 
         <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconLogout className={classes.linkIcon} stroke={2} />

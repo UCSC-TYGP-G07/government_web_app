@@ -1,12 +1,17 @@
-import { TextInput, Checkbox, Button, Group, Box, Title, Flex, Container, Avatar, Menu, Paper } from '@mantine/core';
+import React, { useState } from 'react';
+import { TextInput, Checkbox, Button, Group, Box, Title, Flex, Container, Avatar, Menu, Paper, Modal } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import Bottombar from "../../components/Bottombar";
-import { NavbarSimpleColored } from '../../components/NavbarSimpleColored.tsx';
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
+import img from "../../assets/masha.jpeg";
 
 
 function Viewform() {
+
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+
   const navigate = useNavigate();
 
   // const form = useForm({
@@ -34,38 +39,12 @@ function Viewform() {
 
   return (
     <>
-     {/* <Navbar /> */}
-    {/* <Navbar showProfileButton={false} /> */}
 
     <NavbarSimpleColored />
 
-    <Container style={{ position: 'relative' }}>
-        <Menu>
-          <Menu.Target>
-            {/* Example: Profile button */}
-            <Avatar
-              radius="xl"
-              color='#27187E'
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '-450px',
-                cursor: 'pointer',
-                
-              }}
-            >
-              SA
-            </Avatar>
-          </Menu.Target>
-          <Menu.Dropdown>
-            {/* Profile menu items */}
-            <Menu.Label>User's Name</Menu.Label>
-            <Menu.Item>User account page</Menu.Item>
-            <Menu.Item>Settings</Menu.Item>
-            <Menu.Item>Sign out</Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
-      </Container>
+    {/* <Navbar showProfileButton={true} /> */}
+    <Navbar showProfileButton={true} />
+
 
     <Flex direction="column" align="center" >
     <Title order={1} align="center" my={60}>
@@ -77,7 +56,7 @@ function Viewform() {
       <Paper style={{padding: "80px",
           display: "flex",
           flexDirection: "column",
-          gap: "20px", backgroundColor: '#F1F2F6'}} shadow="md">
+          gap: "20px", backgroundColor: '#eaeef2'}} shadow="md">
         <form 
         style={{
           display: "flex",
@@ -96,6 +75,11 @@ function Viewform() {
             label="District"
             placeholder=" Colombo"
             {...form.getInputProps("district")}
+          />
+          <TextInput style={{ paddingBottom: 20}}
+            label="Place of Birth"
+            placeholder=" Colombo"
+            {...form.getInputProps("place_birth")}
           />
           <TextInput style={{ paddingBottom: 20}}
             label="Gender"
@@ -130,10 +114,34 @@ function Viewform() {
             placeholder="abc@gmail.com"
             {...form.getInputProps("email")}
           />
+          {/* <TextInput style={{ paddingBottom: 20}}
+            label="Verified Image"
+            placeholder="image"
+            {...form.getInputProps("email")}
+          /> */}
+
+      <TextInput
+        style={{ paddingBottom: 20 }}
+        label="Verified Image"
+        placeholder="image"
+        onClick={() => setImageModalOpen(true)} // Open modal on input click
+        readOnly // Prevents typing in the input
+        value="Click to View Image" // Placeholder text in the input
+      />
+
+      <Modal
+        opened={imageModalOpen}
+        onClose={() => setImageModalOpen(false)}
+        title="Verified Image"
+      >
+        {/* Replace 'YOUR_IMAGE_URL' with the actual URL of the image */}
+        <img src={img} alt="Verified Image" style={{ maxWidth: '100%' }} />
+      </Modal>
+
           </div>
           </form>
           <Group position="center" mt="md" style={{ flex: 1 }}>
-            <Button color="blue" onClick={() => {navigate('/verifyimage')}}>
+            <Button color="blue" onClick={() => {navigate('/verifyapplication')}}>
               Next
             </Button>
           </Group>
@@ -141,7 +149,6 @@ function Viewform() {
       </Paper>
     </Container>
     </Flex>
-    {/* <Bottombar /> */}
     </>
   );
 }

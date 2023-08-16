@@ -6,7 +6,9 @@ function Index(){
     return (
         <>
             {/* <Navbar /> */}
-            <Navbar showProfileButton={false} />
+            {/* <Navbar showProfileButton={false} /> */}
+      <Navbar showProfileButton={true} />
+
             <Text>Index Page</Text>
             <Botttombar />
         </>

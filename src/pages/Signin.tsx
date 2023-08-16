@@ -6,11 +6,16 @@ import {
   Button,
   Center,
   Flex,
+  Container,
+  Menu,
+  Image
 } from "@mantine/core";
 import Navbar from "../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import Bottombar from "../components/Bottombar";
 import { useViewportSize } from "@mantine/hooks";
+import logo from '../assets/logo-no-background.png';
+import { FaAngleDown } from 'react-icons/fa6';
 
 function Signin() {
   const navigate = useNavigate();
@@ -65,7 +70,35 @@ function Signin() {
 
   return (
     <>
-    <Navbar showProfileButton={false} />
+    <Flex h={64} align='center' justify='space-between' bg='#758BFD'>
+         {/* Logo container */}
+         <Flex ml={24} p={12}>
+             <Image maw={36} src={logo} alt='OneId logo'/>
+         </Flex>
+
+         {/* Menu Container */}
+         <Flex align='center'>
+             {/* Language selector */}
+            <Container>
+                <Menu>
+                    <Menu.Target>
+                        <Button color='primary' variant='white' rightIcon={<FaAngleDown />}>English</Button>
+                    </Menu.Target>
+                    <Menu.Dropdown>
+                        <Menu.Label>Select language</Menu.Label>
+                        <Menu.Item>English</Menu.Item>
+                        <Menu.Item>Sinhala</Menu.Item>
+                        <Menu.Item>Tamil</Menu.Item>
+                    </Menu.Dropdown>
+                </Menu>
+            </Container>
+      </Flex>
+      </Flex>
+
+
+    {/* <Navbar showProfileButton={false} /> */}
+    <Navbar showProfileButton={true} />
+    
 
       {/* <Navbar /> */}
       {/* Main container which contains Sign in page */}

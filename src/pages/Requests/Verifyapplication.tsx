@@ -5,7 +5,7 @@ import { Button, Flex, Title, Menu, Container, Avatar } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../components/Navbar";
 import Bottombar from "../../components/Bottombar";
-import { NavbarSimpleColored } from '../../components/NavbarSimpleColored.tsx';
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 
 
 const Verifyapplication: React.FC = () => {
@@ -28,37 +28,12 @@ const Verifyapplication: React.FC = () => {
 
   return (
     <>
-    {/* <Navbar /> */}
-    {/* <Navbar showProfileButton={false} /> */}
+  
     <NavbarSimpleColored />
 
-    <Container style={{ position: 'relative' }}>
-        <Menu>
-          <Menu.Target>
-            {/* Example: Profile button */}
-            <Avatar
-              radius="xl"
-              color='#27187E'
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '-450px',
-                cursor: 'pointer',
-                
-              }}
-            >
-              SA
-            </Avatar>
-          </Menu.Target>
-          <Menu.Dropdown>
-            {/* Profile menu items */}
-            <Menu.Label>User's Name</Menu.Label>
-            <Menu.Item>User account page</Menu.Item>
-            <Menu.Item>Settings</Menu.Item>
-            <Menu.Item>Sign out</Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
-      </Container>
+    {/* <Navbar showProfileButton={true} /> */}
+    <Navbar showProfileButton={true} />
+
 
     <div className="App">
     <Flex direction="column" align="center">
@@ -86,7 +61,6 @@ const Verifyapplication: React.FC = () => {
       </div>
      
     </div>
-    {/* <Bottombar /> */}
     </>
   );
 };

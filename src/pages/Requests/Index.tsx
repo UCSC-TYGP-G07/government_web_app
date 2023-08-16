@@ -11,7 +11,8 @@ import {
   Title,
   Menu,
   Avatar,
-  Paper
+  Paper,
+  
 } from "@mantine/core";
 import Navbar from "../../components/Navbar";
 import Bottombar from "../../components/Bottombar";
@@ -19,7 +20,7 @@ import { useViewportSize } from "@mantine/hooks";
 import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
-import { NavbarSimpleColored } from '../../components/NavbarSimpleColored.tsx';
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 
 
 interface TableData {
@@ -39,6 +40,10 @@ const normalRequests: TableData[] = [
   { Name: "Masha Nilushi", District: "Colombo", Type: "NIC", Contact: "0779025068", Email: "mashanilu@gmail.com" },
   { Name: "Ramindu Ramsith Walgama",District: "Galle", Type: "NIC", Contact: "0765419064", Email: "ramindu2000@gmail.com"},
   { Name: "Sandul Renuja Galappaththi",District: "Galle", Type: "NIC", Contact: "0779035678", Email: "renusandul@gmail.com"},
+  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
+  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
+  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
+  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
   { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
   
 
@@ -71,107 +76,85 @@ return (
 
     <NavbarSimpleColored />
 
-    <Container style={{ position: 'relative' }}>
-        <Menu>
-          <Menu.Target>
-            {/* Example: Profile button */}
-            <Avatar
-              radius="xl"
-              color='#27187E'
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '-450px',
-                cursor: 'pointer',
-                
-              }}
-            >
-              SA
-            </Avatar>
-          </Menu.Target>
-          <Menu.Dropdown>
-            {/* Profile menu items */}
-            <Menu.Label>User's Name</Menu.Label>
-            <Menu.Item>User account page</Menu.Item>
-            <Menu.Item>Settings</Menu.Item>
-            <Menu.Item>Sign out</Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
-      </Container>
+    {/* <Navbar showProfileButton={true} /> */}
+    <Navbar showProfileButton={true}  />
 
-    <Flex direction="column" align="center" >
-      <Title order={1} align="center" my={60}>
+
+    <Flex direction="column" align='flex-start' my={40}  >
+      <Title order={1} align="center" my={10} style={{marginLeft: 170}}>
         Requests
       </Title>
 
       <Container size="lg">
-      <Paper style={{padding: 40,
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: '#F1F2F6'
-          }} shadow="md"> 
+      
       <Center>
         <SegmentedControl
-          color="blue"
+   
           data={[
             { label: "Normal", value: "normal" },
             { label: "Expedited", value: "expedited" },
           ]}
           value={segValue}
           onChange={handleTabChange}
+          style={{
+            // padding: '10px',
+            // '--segmented-control-tab-padding': '16px 24px', // Increase padding to adjust tab size
+          }}
         />
       </Center>
+      <Paper style={{padding: 20,
+     
+     marginLeft: -95,
+     minWidth: 1300,
+     display: "flex",
+     flexDirection: "column",
+     backgroundColor: '#ffffff',
+     boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+     }}  > 
       <Flex
         align="center"
         justify="center"
         direction="column"
-        my={30}
-        style={{ borderRadius: 10 }}
+        my={20}
+        style={{ borderRadius: 10, overflowX: 'auto' }}
       >
-        <table>
-          <thead>
-            <tr>
-              
-              <th style={{paddingRight: "80px" }}>Name</th>
-              <th style={{paddingRight: "30px" }}>District</th>
-              <th style={{paddingRight: "30px" }}>Type</th>
-              <th style={{paddingRight: "30px" }}>Contact</th>
-              <th style={{paddingRight: "30px" }}>Email</th>
-            </tr>
-          </thead>
-          
-          <tbody >
-            {selectedTabData.map((row, index) => (
-              <tr key={index} >
-                
-                <td>
-                <Text style={{ paddingRight: "10px", paddingBottom: "30px" }}>{row.Name}</Text>
-                </td>
-                <td>
-                <Text style={{paddingRight: "30px", paddingBottom: "30px" }}>{row.District}</Text>
-                </td>
-                <td>
-                <Text style={{ paddingRight: "30px", paddingBottom: "30px" }}>{row.Type}</Text>
-                </td>
-                <td>
-                <Text style={{ paddingRight: "30px", paddingBottom: "30px" }}>{row.Contact}</Text>
-                </td>
-                <td>
-                <Text style={{ paddingRight: "30px", paddingBottom: "30px" }}>{row.Email}</Text>
-                </td>
-                <td >
-                  <div style={{marginTop: -25}}><Button  variant='filled' color='#758BFD' onClick={() => {navigate('/form')}}>View More</Button></div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Flex>
+  <table style={{ minWidth: 1000, width: '100%', borderCollapse: 'collapse' }}>
+    <thead style={{fontSize: 20}}>
+      <tr>
+        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Name</th>
+        <th style={{ padding: '10px 20px', textAlign: 'left' }}>District</th>
+        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Type</th>
+        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Contact</th>
+        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Email</th>
+        <th style={{ padding: '10px 20px', textAlign: 'left' }}></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {selectedTabData.map((row, index) => (
+        <tr key={index}>
+          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Name}</td>
+          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.District}</td>
+          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Type}</td>
+          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Contact}</td>
+          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Email}</td>
+          <td style={{ padding: '40px 20px 20px', textAlign: 'left' }}>
+            <div style={{ marginTop: -25 }}>
+              <Button variant="filled" color="primary.7" onClick={() => navigate('/form')}>
+                View More
+              </Button>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</Flex>
+
       </Paper>
       </Container>
     </Flex>
-    {/* <Bottombar /> */}
-    {/* <Bottombar /> */}
+   
   </>
 );
 }
