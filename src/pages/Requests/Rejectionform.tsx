@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Textarea, useMantineTheme, Flex, Title } from '@mantine/core';
+import { Button, Textarea, useMantineTheme, Flex, Title, Menu, Container, Avatar } from '@mantine/core';
 import Navbar from "../../components/Navbar";
 import Bottombar from "../../components/Bottombar";
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 
 
 const RejectionForm: React.FC = () => {
@@ -17,8 +18,13 @@ const RejectionForm: React.FC = () => {
 
   return (
     <>
-    <Navbar />
-    <form onSubmit={handleSubmit} style={{width: '70%', margin: '0 auto'}}>
+    <NavbarSimpleColored />
+
+    {/* <Navbar showProfileButton={true} /> */}
+    <Navbar showProfileButton={true}  />
+
+<br /><br />
+    <form onSubmit={handleSubmit} style={{width: '70%', marginLeft: 370}}>
     <br /><br />
       <Textarea
         id="rejection_note"
@@ -30,7 +36,7 @@ const RejectionForm: React.FC = () => {
       <br />
       <Button type="submit">Send</Button>
     </form>
-    <Bottombar />
+    {/* <Bottombar /> */}
     </>
   );
 };

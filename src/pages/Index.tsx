@@ -5,7 +5,10 @@ import Botttombar from "../components/Bottombar";
 function Index(){
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
+            {/* <Navbar showProfileButton={false} /> */}
+      <Navbar showProfileButton={true} />
+
             <Text>Index Page</Text>
             <Botttombar />
         </>

@@ -8,6 +8,9 @@ import Form from './pages/Requests/Viewform';
 import VerifyImage from './pages/Requests/VerifyImage';
 import VerifyApplication from './pages/Requests/Verifyapplication';
 import RejectionForm from './pages/Requests/Rejectionform';
+import IdentificationCard from './pages/Requests/IdentificationCard';
+import Adduser from './pages/Requests/Adduser';
+import Dashboard from './pages/Requests/Dashboard';
 
 function App() {
   // const handleFormSubmit = (rejectionNote: string) => {
@@ -31,7 +34,10 @@ const router = createBrowserRouter([
     {path: '/form', element: <Form />},
     {path: '/verifyimage', element: <VerifyImage />},
     {path: '/verifyapplication', element: <VerifyApplication />},
-    {path: '/rejectionform', element: <RejectionForm />}
+    {path: '/rejectionform', element: <RejectionForm />},
+    {path: '/identificationcard', element: <IdentificationCard />},
+    {path: '/adduser', element: <Adduser />},
+    {path: '/dashboard', element: <Dashboard />}
 ]);
 
 export default App;

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PDFViewer from '../../components/Pdfviewer';
 import CommentBox from '../../components/Commentbox';
-import { Button, Flex, Title } from '@mantine/core';
+import { Button, Flex, Title, Menu, Container, Avatar } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../components/Navbar";
 import Bottombar from "../../components/Bottombar";
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 
 
 const Verifyapplication: React.FC = () => {
@@ -20,22 +21,27 @@ const Verifyapplication: React.FC = () => {
   useEffect(() => {
     // Simulating fetching the PDF URL from the database after 1 second
     setTimeout(() => {
-      const fetchedPdfUrl = 'https://www.cs.utoronto.ca/~fidler/teaching/2015/slides/CSC2523/CNN-tutorial.pdf'; // Replace with the actual fetched URL
+      const fetchedPdfUrl = 'https://drp.gov.lk/Download/Application%20DRP.pdf'; // Replace with the actual fetched URL
       setPdfUrl(fetchedPdfUrl);
     }, 1000);
   }, []);
 
   return (
     <>
-    <Navbar />
+  
+    <NavbarSimpleColored />
+
+    {/* <Navbar showProfileButton={true} /> */}
+    <Navbar showProfileButton={true} />
+
 
     <div className="App">
-    <Flex direction="column" align="center" my={26}>
-    <Title order={1} align="center">
+    <Flex direction="column" >
+    <Title order={1} my={40} ml={50}>
       Check Application
     </Title>
     </Flex>
-      <div className="content-wrapper" style={{width: '80%', margin: '0 auto'}}>
+      <div className="content-wrapper" style={{width: '80%', marginLeft: 330}}>
         {pdfUrl ? ( // Check if the PDF URL is available
           <div className="pdf-viewer">
             <PDFViewer pdfUrl={pdfUrl} />
@@ -48,14 +54,13 @@ const Verifyapplication: React.FC = () => {
         </div>
         <br />
         <div>
-       <Button style={{width: '100px'}} variant='filled' color='#758BFD' onClick={() => {navigate('/verifyapplication')}}>Approve</Button>
-       <Button style={{marginLeft: '30px', width: '100px'}}  variant='filled' color='#758BFD' onClick={() => {navigate('/rejectionform')}}>Reject</Button>
+       <Button style={{width: '100px'}} variant='filled' color="primary.7" onClick={() => {navigate('/identificationcard')}}>Approve</Button>
+       <Button style={{marginLeft: '30px', width: '100px'}}  variant='filled' color="primary.7" onClick={() => {navigate('/rejectionform')}}>Reject</Button>
         
         </div>
       </div>
      
     </div>
-    <Bottombar />
     </>
   );
 };

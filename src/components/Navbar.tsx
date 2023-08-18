@@ -1,48 +1,156 @@
-import { Container, Image, Flex, Menu, Button, Avatar } from "@mantine/core";
-import {FaAngleDown} from "react-icons/fa6";
+// // import React from 'react';
+// // import { Container, Menu, Avatar } from '@mantine/core';
+// // import { FaAngleDown } from 'react-icons/fa6';
+// // import logo from '../assets/logo-no-background.png';
+
+// // interface NavbarProps {
+// //   showProfileButton: boolean;
+// // }
+
+// // function Navbar({ showProfileButton }: NavbarProps) {
+// //   return (
+// //     <>
+// //       {showProfileButton && (
+// //         <Container style={{ position: 'relative' }}>
+// //           <Menu>
+// //             <Menu.Target>
+// //               {/* Example: Profile button */}
+// //               <Avatar
+// //                 radius="xl"
+// //                 color="#27187E"
+// //                 style={{
+// //                   position: 'absolute',
+// //                   top: '20px',
+// //                   right: '-450px',
+// //                   cursor: 'pointer',
+// //                 }}
+// //               >
+// //                 SA
+// //               </Avatar>
+// //             </Menu.Target>
+// //             <Menu.Dropdown>
+// //               {/* Profile menu items */}
+// //               <Menu.Label>User's Name</Menu.Label>
+// //               <Menu.Item>User Profile</Menu.Item>
+// //             </Menu.Dropdown>
+// //           </Menu>
+// //         </Container>
+// //       )}
+// //     </>
+// //   );
+// // }
+
+// // export default Navbar;
+
+
+// import React from 'react';
+// import { Container, Menu, Avatar } from '@mantine/core';
+// import { FaAngleDown } from 'react-icons/fa6';
+// import logo from '../assets/logo-no-background.png';
+
+// interface NavbarProps {
+//   showProfileButton: boolean;
+// }
+
+// function Navbar({ showProfileButton }: NavbarProps) {
+//   return (
+//     <>
+//       {showProfileButton && (
+//         <Container style={{ position: 'relative' }}>
+//           <Menu>
+//             <Menu.Target>
+//               {/* Example: Profile button */}
+//               <div
+//                 style={{
+//                   position: 'absolute',
+//                   top: '20px',
+//                   right: '-450px',
+//                   cursor: 'pointer',
+//                   backgroundColor: '#1976D2', // Apply blue background color
+//                   borderRadius: '50%', // Make the background circular
+//                   padding: '10px', // Add some padding
+//                 }}
+//               >
+//                 <Avatar radius="xl" color="#fff">
+//                   SA
+//                 </Avatar>
+//               </div>
+//             </Menu.Target>
+//             <Menu.Dropdown>
+//               {/* Profile menu items */}
+//               <Menu.Label>User's Name</Menu.Label>
+//               <Menu.Item>User Profile</Menu.Item>
+//             </Menu.Dropdown>
+//           </Menu>
+//         </Container>
+//       )}
+//     </>
+//   );
+// }
+
+// export default Navbar;
+
+
+import React from 'react';
+import { Container, Menu, Avatar, Title, Group, Flex, Image, Text  } from '@mantine/core';
 import logo from "../assets/logo-no-background.png";
 
-function Navbar(){
-    return (
-      <Flex h={64} align='center' justify='space-between' bg='#758BFD'>
-        {/* Logo container */}
-        <Flex ml={24} p={12}>
-            <Image maw={36} src={logo} alt='OneId logo'/>
-        </Flex>
+interface NavbarProps {
+  showProfileButton: boolean;
+  // pageTitle: string;
+}
 
-        {/* Menu Container */}
-        <Flex align='center'>
-            {/* Language selector */}
-           <Container>
-               <Menu>
-                   <Menu.Target>
-                       <Button color='primary' variant='white' rightIcon={<FaAngleDown />}>English</Button>
-                   </Menu.Target>
-                   <Menu.Dropdown>
-                       <Menu.Label>Select language</Menu.Label>
-                       <Menu.Item>English</Menu.Item>
-                       <Menu.Item>Sinhala</Menu.Item>
-                       <Menu.Item>Tamil</Menu.Item>
-                   </Menu.Dropdown>
-               </Menu>
-           </Container>
-            {/* Sign in button */}
-            <Container>
-                <Menu>
-                    <Menu.Target>
-                       <Avatar radius='xl'>SA</Avatar>
-                    </Menu.Target>
-                    <Menu.Dropdown>
-                        <Menu.Label>Shamindi Anuththara</Menu.Label>
-                        <Menu.Item>User account page</Menu.Item>
-                        <Menu.Item>Settings</Menu.Item>
-                        <Menu.Item>Sign out</Menu.Item>
-                    </Menu.Dropdown>
-                </Menu>
-            </Container>
-        </Flex>
-      </Flex>
-    );
+function Navbar({ showProfileButton  }: NavbarProps) {
+  return (   
+      <div>
+      {showProfileButton && (
+
+        <div
+      style={{
+        backgroundColor: '#e9edff', // Blue background color
+        color: '#fff', // White text color
+        // padding: '5px ', // Vertical padding
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+        >
+
+    {/* <div>
+      <Title order={1} align="center" my={20} style={{marginLeft: 30, fontSize: 30, color: '#27187E'}}>
+          {pageTitle}
+      </Title>
+    </div> */}
+
+        <Group>
+          
+          <Flex ml={10} mt={5} p={12}>
+              <Image maw={40} src={logo} alt='OneId logo'/>
+              <Text ml={15} mb={10} fw={50} mt={7} style={{fontSize: 18, color: '#27187E', fontWeight: 'bold' }}> GOVERNMENT</Text>
+          </Flex> 
+          
+          </Group>
+
+        <Container style={{marginRight: 10, padding: 10}}>
+          <Menu>
+            <Menu.Target>
+              {/* Example: Profile button */}
+              <Avatar radius="xl" color="primary.7" style={{backgroundColor: 'black'}}>
+                DRP
+              </Avatar>
+            </Menu.Target>
+            <Menu.Dropdown>
+              {/* Profile menu items */}
+              <Menu.Label> Department for Registration of Persons</Menu.Label>
+              <Menu.Item>User Profile</Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+        </Container>
+    </div>
+
+      )}
+      </div>
+  );
 }
 
 export default Navbar;

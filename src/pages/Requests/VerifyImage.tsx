@@ -1,31 +1,45 @@
 import React from 'react';
 import { RiCheckLine } from 'react-icons/ri';
-import { Button, Title, Flex } from '@mantine/core';
+import { Button, Title, Flex, Menu, Avatar, Container, Paper } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../components/Navbar";
 import Bottombar from "../../components/Bottombar";
-import img from "../../assets/images/girl_image.jpg";
+import img from "../../assets/masha.jpeg";
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 
 
 const VerifyImage: React.FC = () => {
     const navigate = useNavigate();
 
   const handleNextClick = () => {
-    // Add any logic you need before navigating to the "Otherapplication" page
-    // For example, you can perform data validation or any other checks
 
     // Navigate to the "Otherapplication" page
     navigate('/Otherapplication');
   };
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
+    {/* <Navbar showProfileButton={false} /> */}
+
+    <NavbarSimpleColored />
+
+    {/* <Navbar showProfileButton={true} /> */}
+    <Navbar showProfileButton={true} />
+
+
+      
     <div>
-    <Flex direction="column" align="center" my={36}>
-    <Title order={1} align="center">
+    <Flex direction="column" align="center">
+    <Title order={1} align="center" my={60}>
       Validity of Photo
     </Title>
-    <br />
+
+    <Container size="md" >
+      <Paper style={{padding: "80px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px", backgroundColor: '#F1F2F6'}} shadow="md">
+    
       <div 
         style={{
           border: '2px solid #000',
@@ -53,10 +67,12 @@ const VerifyImage: React.FC = () => {
        <Button variant='filled' color='#758BFD' onClick={() => {navigate('/verifyapplication')}}>Next</Button>
 
       </div>
+      </Paper>
+      </Container>
     </Flex>
 
     </div>
-    <Bottombar />
+    {/* <Bottombar /> */}
     </>
   );
 };

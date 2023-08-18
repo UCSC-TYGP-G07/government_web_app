@@ -1,74 +1,169 @@
-import { TextInput, Checkbox, Button, Group, Box, Title, Flex } from '@mantine/core';
+import React, { useState } from 'react';
+import { TextInput, Checkbox, Button, Group, Box, Title, Flex, Container, Avatar, Menu, Paper, Modal } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import Bottombar from "../../components/Bottombar";
+import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
+import img from "../../assets/masha.jpeg";
+
 
 function Viewform() {
+
+  const [imageModalOpen, setImageModalOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const form = useForm({
     initialValues: {
-      email: '',
-      termsOfService: false,
-    },
-
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      name: "Masha Nilushi",
+      district: "Colombo",
+      gender: "Female",
+      contact: "0779025068",
+      dob: "06/06/1999",
+      occupation: "Teacher",
+      email: "mashanilu@gmail.com",
+      address: "9/18, Rukmalgama Road, Athurugiriya",
+      place_birth: "Sri Jayawardhanapurakotte Hospital"
     },
   });
 
+  const openImageModal = () => {
+    setImageModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setImageModalOpen(false);
+  };
+
   return (
     <>
-     <Navbar />
 
-    <Flex direction="column" align="center" my={36}>
-    <Title order={1} align="center">
+    <NavbarSimpleColored />
+
+    {/* <Navbar showProfileButton={true} /> */}
+    <Navbar showProfileButton={true} />
+
+
+    <Flex direction="column" >
+    <Title order={1} ml={340} my={40}>
       Request Form
     </Title>
 
-    <Box mx="auto" my={25} style={{width: '20%'}}>
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
-        <TextInput
-         
-          label="NIC"
-          placeholder="01"
-          {...form.getInputProps('nic')}
-        />
-         <TextInput
+
+<Container size="lg" >
+      <Paper style={{padding: "80px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "30px",
+          boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",}} >
+        <form 
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "100px",
           
-          label="Name"
-          placeholder="John Doe"
-          {...form.getInputProps('name')}
-        />
-         <TextInput
-          
-          label="Contact"
-          placeholder="07# #######"
-          {...form.getInputProps('contact')}
-        />
-         <TextInput
-          
-          label="Type"
-          placeholder="ID Type"
-          {...form.getInputProps('type')}
-        />
-         <TextInput
+        }}
+        onSubmit={form.onSubmit((values) => console.log(values))}>
+          <div style={{ flex: 1}}>
+          <TextInput style={{ paddingBottom: 30, width: '350px' }}
+            label="Full Name"
+            placeholder="John Doe"
+            readOnly
+            
+            {...form.getInputProps("name")}
+          />
+          <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            label="District"
+            placeholder=" Colombo"
+            readOnly
+            {...form.getInputProps("district")}
+          />
+          <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            label="Place of Birth"
+            placeholder=" Colombo"
+            readOnly
+            {...form.getInputProps("place_birth")}
+          />
+          <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            label="Gender"
+            placeholder="Male"
+            readOnly
+            {...form.getInputProps("gender")}
+          />
+          <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            label="Contact"
+            placeholder="07********"
+            readOnly
+            {...form.getInputProps("contact")}
+          />
+          </div>
+
+          <div style={{ flex: 1 }}>
+          <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            label="Permanent Address"
+            placeholder="No.5, Thibirigasyaya, Colombo 5"
+            readOnly
+            {...form.getInputProps("address")}
+          />
+           <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            label="Date of Birth"
+            placeholder="__/__/____"
+            readOnly
+            {...form.getInputProps("dob")}
+          />
+          <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            label="Occupation/Profession"
+            placeholder="Doctor"
+            readOnly
+            {...form.getInputProps("occupation")}
+          />
+          <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            label="Email"
+            placeholder="abc@gmail.com"
+            readOnly
+            {...form.getInputProps("email")}
+          />
+          {/* <TextInput style={{ paddingBottom: 20}}
+            label="Verified Image"
+            placeholder="image"
+            {...form.getInputProps("email")}
+          /> */}
+
+      <TextInput
+        style={{ paddingBottom: 20 }}
+        label="Verified Image"
+        placeholder="image"
+        onClick={openImageModal}  // Open modal on input click
+        readOnly // Prevents typing in the input
+        value="Click to View Image" // Placeholder text in the input
+      />
+
+      <Modal
+        opened={imageModalOpen}
+        onClose={closeImageModal}
+        title="Verified Image"
+      >
+        {/* Replace 'YOUR_IMAGE_URL' with the actual URL of the image */}
+        {/* <img src={img} alt="Verified Image" style={{ maxWidth: '100%' }} /> */}
+
+        <div style={{ textAlign: 'center' }}>
+          <img src={img} alt="Verified Image" style={{ maxWidth: '100%' }} />
+          <div style={{ fontSize: '2rem', marginTop: '1rem',  color: 'green'  }}>&#x2714;</div>
+        </div>
+      </Modal>
+
+          </div>
+          </form>
+          <Group position="center" mt="md" style={{ flex: 1 }}>
+            <Button color="primary.7" onClick={() => {navigate('/verifyapplication')}}>
+              Next
+            </Button>
+          </Group>
         
-          label="Address"
-          placeholder="Colombo"
-          {...form.getInputProps('address')}
-        />
-
-        <Group position="center" mt="md">
-        <Button variant='filled' color='#758BFD' onClick={() => {navigate('/verifyimage')}}>Next</Button>
-        </Group>
-
-
-      </form>
-    </Box>
+      </Paper>
+    </Container>
     </Flex>
-    <Bottombar />
     </>
   );
 }
