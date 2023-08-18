@@ -76,7 +76,7 @@ const IdentificationCard: React.FC<IdentificationCardProps> = ({
             <Text size="md" style={{marginBottom: 20}}><b>Issue Date:  </b>10/08/2023</Text>
             <Text size="md" style={{marginBottom: 20}}><b>Expire Date:</b>  10/08/2028</Text>
             
-              <div style={{marginLeft: 300, marginTop: -95}}>
+              <div style={{marginLeft: 300, marginTop: -95 }}>
                 {/* Add QR code for Issue Date */}
                 <img src={qr}  style={{  marginRight: 200, width:85, height:85 }} />
               </div>
