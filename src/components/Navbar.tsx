@@ -1,99 +1,8 @@
-// // import React from 'react';
-// // import { Container, Menu, Avatar } from '@mantine/core';
-// // import { FaAngleDown } from 'react-icons/fa6';
-// // import logo from '../assets/logo-no-background.png';
-
-// // interface NavbarProps {
-// //   showProfileButton: boolean;
-// // }
-
-// // function Navbar({ showProfileButton }: NavbarProps) {
-// //   return (
-// //     <>
-// //       {showProfileButton && (
-// //         <Container style={{ position: 'relative' }}>
-// //           <Menu>
-// //             <Menu.Target>
-// //               {/* Example: Profile button */}
-// //               <Avatar
-// //                 radius="xl"
-// //                 color="#27187E"
-// //                 style={{
-// //                   position: 'absolute',
-// //                   top: '20px',
-// //                   right: '-450px',
-// //                   cursor: 'pointer',
-// //                 }}
-// //               >
-// //                 SA
-// //               </Avatar>
-// //             </Menu.Target>
-// //             <Menu.Dropdown>
-// //               {/* Profile menu items */}
-// //               <Menu.Label>User's Name</Menu.Label>
-// //               <Menu.Item>User Profile</Menu.Item>
-// //             </Menu.Dropdown>
-// //           </Menu>
-// //         </Container>
-// //       )}
-// //     </>
-// //   );
-// // }
-
-// // export default Navbar;
-
-
-// import React from 'react';
-// import { Container, Menu, Avatar } from '@mantine/core';
-// import { FaAngleDown } from 'react-icons/fa6';
-// import logo from '../assets/logo-no-background.png';
-
-// interface NavbarProps {
-//   showProfileButton: boolean;
-// }
-
-// function Navbar({ showProfileButton }: NavbarProps) {
-//   return (
-//     <>
-//       {showProfileButton && (
-//         <Container style={{ position: 'relative' }}>
-//           <Menu>
-//             <Menu.Target>
-//               {/* Example: Profile button */}
-//               <div
-//                 style={{
-//                   position: 'absolute',
-//                   top: '20px',
-//                   right: '-450px',
-//                   cursor: 'pointer',
-//                   backgroundColor: '#1976D2', // Apply blue background color
-//                   borderRadius: '50%', // Make the background circular
-//                   padding: '10px', // Add some padding
-//                 }}
-//               >
-//                 <Avatar radius="xl" color="#fff">
-//                   SA
-//                 </Avatar>
-//               </div>
-//             </Menu.Target>
-//             <Menu.Dropdown>
-//               {/* Profile menu items */}
-//               <Menu.Label>User's Name</Menu.Label>
-//               <Menu.Item>User Profile</Menu.Item>
-//             </Menu.Dropdown>
-//           </Menu>
-//         </Container>
-//       )}
-//     </>
-//   );
-// }
-
-// export default Navbar;
-
-
 import React from 'react';
 import { Container, Menu, Avatar, Title, Group, Flex, Image, Text  } from '@mantine/core';
 import logo from "../assets/logo-no-background.png";
+import { useNavigate } from 'react-router-dom';
+
 
 interface NavbarProps {
   showProfileButton: boolean;
@@ -101,6 +10,8 @@ interface NavbarProps {
 }
 
 function Navbar({ showProfileButton  }: NavbarProps) {
+  const navigate = useNavigate();
+
   return (   
       <div>
       {showProfileButton && (
@@ -142,7 +53,7 @@ function Navbar({ showProfileButton  }: NavbarProps) {
             <Menu.Dropdown>
               {/* Profile menu items */}
               <Menu.Label> Department for Registration of Persons</Menu.Label>
-              <Menu.Item>User Profile</Menu.Item>
+              <Menu.Item onClick={() => {navigate('/profile')}}>User Profile</Menu.Item>
             </Menu.Dropdown>
           </Menu>
         </Container>
@@ -152,5 +63,4 @@ function Navbar({ showProfileButton  }: NavbarProps) {
       </div>
   );
 }
-
 export default Navbar;

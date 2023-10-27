@@ -18,6 +18,7 @@ const useStyles = createStyles((theme) => ({
 
   navbar: {
     backgroundColor: '#27187E', // Change this to your desired dark blue color
+   
   },
 
   version: {
@@ -33,7 +34,7 @@ const useStyles = createStyles((theme) => ({
 
   link: {
     ...theme.fn.focusStyles(),
-
+    
     display: 'flex',
     alignItems: 'center',
     textDecoration: 'none',
@@ -43,6 +44,7 @@ const useStyles = createStyles((theme) => ({
     borderRadius: theme.radius.sm,
     fontWeight: 700,
     marginBottom: 10,
+    
     
 
     // '&:hover': {
@@ -66,17 +68,17 @@ const useStyles = createStyles((theme) => ({
     marginRight: theme.spacing.sm,
   },
 
+  
   linkActive: {
+    backgroundColor: 'rgba(255, 255, 255, 0.3)', // Set the background color to white when active
     '&, &:hover': {
-      backgroundColor: theme.fn.lighten(
-        theme.fn.variant({ variant: 'filled', color: theme.white }).background!,
-        0.15
-      ),
       [`& .${getStylesRef('icon')}`]: {
         opacity: 0.9,
       },
     },
   },
+
+
 }));
 <br />
 const data = [

@@ -1,6 +1,7 @@
 import React from 'react';
 import { MantineProvider } from "@mantine/core";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Index from "./pages/Index";
 import Signin from "./pages/Signin";
 import RequestIndex from "./pages/Requests/Index";
 import theme from "./theme";
@@ -10,7 +11,10 @@ import VerifyApplication from './pages/Requests/Verifyapplication';
 import RejectionForm from './pages/Requests/Rejectionform';
 import IdentificationCard from './pages/Requests/IdentificationCard';
 import Adduser from './pages/Requests/Adduser';
-import Dashboard from './pages/Requests/Dashboard';
+import Dashboard from './pages/Requests/dashboard';
+import AuthProvider from "./services/AuthContextProvider";
+import Profile from "./pages/Requests/Userprofile";
+
 
 function App() {
   // const handleFormSubmit = (rejectionNote: string) => {
@@ -20,7 +24,10 @@ function App() {
 
   return (
     <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
-      <RouterProvider router={router} />
+      {/* <RouterProvider router={router} /> */}
+      <AuthProvider>
+            <RouterProvider router={router} />
+        </AuthProvider>
     </MantineProvider>
 
   );
@@ -29,7 +36,8 @@ function App() {
 
 /* Adding browser based routing */
 const router = createBrowserRouter([
-    {path: '/', element: <Signin />},
+    {path: '/', element: <Index />},
+    {path: '/signin', element: <Signin />},
     {path: '/requests', element: <RequestIndex />},
     {path: '/form', element: <Form />},
     {path: '/verifyimage', element: <VerifyImage />},
@@ -37,7 +45,8 @@ const router = createBrowserRouter([
     {path: '/rejectionform', element: <RejectionForm />},
     {path: '/identificationcard', element: <IdentificationCard />},
     {path: '/adduser', element: <Adduser />},
-    {path: '/dashboard', element: <Dashboard />}
+    {path: '/dashboard', element: <Dashboard />},
+    {path: '/profile', element: <Profile />}
 ]);
 
 export default App;

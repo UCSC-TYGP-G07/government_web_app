@@ -5,11 +5,11 @@
  */
 
 const users: Array<User> = [
-    { email: 'sunilperera@gmail.com', password: 'sunil123' },
-    { email: 'chanakabandara@gmail.com', password: 'chanaka123' },
-    { email: 'sunethkumara@gmail.com', password: 'suneth123' },
-    { email: 'chamalafernando@gmail.com', password: 'chamala123' },
-    { email: 'kanthiperera@gmail.com', password: 'kanthi123' }
+    { email: 'nicdepartment@gmail.com', password: 'nic' },
+    { email: 'passportdepartment@gmail.com', password: 'passport' },
+    { email: 'drivinglicense@gmail.com', password: 'drivinglicense' },
+    { email: 'university@gmail.com', password: 'ucsc' },
+    
 ]
 
 export default users;

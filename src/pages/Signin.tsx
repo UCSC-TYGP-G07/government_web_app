@@ -1,167 +1,262 @@
-import React, { useState } from "react";
-import {
-  TextInput,
-  Title,
-  Text,
-  Button,
-  Center,
-  Flex,
-  Container,
-  Menu,
-  Image
-} from "@mantine/core";
+// // import {TextInput, Title, Text, Button, Center, Flex, Overlay, Modal, Notification, Container} from "@mantine/core";
+// // import Navbar from "../components/Navbar";
+// // import {Link, useNavigate} from "react-router-dom";
+// // import Bottombar from "../components/Bottombar";
+// // import {useDisclosure, useViewportSize} from "@mantine/hooks";
+// // import React, {useEffect, useState} from "react";
+// // import axios from "axios";
+// // import {Sha256} from "@aws-crypto/sha256-js";
+// // import {Buffer} from 'buffer';
+// // import Cookies from "universal-cookie";
+
+// // function Signin(){
+// //     const navigate = useNavigate();
+// //     const { width, height } = useViewportSize();
+// //     const [overlayVisible, setOverlayVisible] = useState(false);
+// //     const [overlayClosable, setOverlayClosable] = useState(false);
+
+// //     /* Managining the modal */
+// //     const [opened, { open, close }] = useDisclosure(false);
+
+// //     const [email, setEmail] = useState('sunilperera@gmail.com');
+// //     const [password, setPassword] = useState('');
+
+// //     const [buttonEnabled, setButtonEnabled] = useState(true);
+
+// //     /* Managing modal elements */
+// //     const [modalColor, setModalColor] = useState('green.9');
+// //     const [modalText, setModalText] = useState('')
+
+// //     /* Checking the validity of email and password */
+// //     useEffect(() => {
+// //         const emailReg = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+
+// //         if(!emailReg.test(email)){
+// //             /* Email not in the correct pattern */
+// //             setButtonEnabled(false);
+// //         }else if(password === '' || password === null){
+// //             /* Empty password */
+// //             setButtonEnabled(false);
+// //         } else {
+// //             setButtonEnabled(true);
+// //         }
+// //     }, [email, password]);
+
+// //     /* Send the request and obtain jwt token */
+// //     async function validateSignIn(){
+// //         /* Display the overlay */
+// //         setOverlayVisible(true);
+// //         setOverlayClosable(false);
+// //         open();
+
+// //         setModalColor('green.9');
+// //         setModalColor('Please wait as we checking your account. Almost there..');
+
+// //         /* Creating hash for the password using SHA-256 */
+// //         let hash = new Sha256();
+// //         hash.update(password)
+// //         const hashedPassword = await hash.digest();
+// //         const hashedPasswordStr = Buffer.from(hashedPassword).toString('hex');
+
+// //         /* Axios call to the backend for authentication */
+// //         await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
+// //             email: email,
+// //             password: hashedPasswordStr
+// //         }, {
+// //             headers: {
+// //                 'Content-Type': 'application/json'
+// //             }
+// //         })
+// //             .then((response) => {
+// //             /* User got authenticated */
+// //             setOverlayClosable(true);
+// //             setModalText('Success! You\'re successfully signed in');
+// //             setModalColor('green.9');
+
+// //             /* Saving the access token in cookies */
+// //             const cookie = new Cookies();
+// //             cookie.set('Access-Token', response.data.access_token);
+
+// //             /* Hiding the success modal */
+// //             setTimeout(() => {
+// //                 closeModal();
+// //                 setModalColor('green.9');
+// //                 setModalColor('');
+
+// //                 /* Redirect to the home page */
+// //                 navigate('/');
+// //             }, 3000);
+// //         })
+// //             .catch((err) => {
+// //                 console.log(err);
+// //                 console.log('User not authenticated!');
+// //             })
+// //     }
+
+// //     /* Closing the overlay */
+// //     function closeModal(){
+// //         close();
+// //     }
+
+// //     return (
+// //         <>
+// //             { overlayVisible &&
+// //                  <Modal opened={opened} onClose={close} withCloseButton={false} closeOnClickOutside={overlayClosable} centered>
+// //                      <Flex direction='row' align='center' justify='center'>
+// //                      <Title weight='normal' ml={4} order={4} align='center' color={modalColor}>{modalText}</Title>
+// //                      </Flex>
+// //                  </Modal>
+// //             }
+// //             {/* <Navbar /> */}
+// //             <Navbar showProfileButton={true} />
+// //             {/* Main container which contains Sign in page */}
+// //             <Flex direction='column' align='center' justify='center' w={width * 0.4} h={height - 96} py='auto' mx='auto' >
+// //                 <Title order={1} align='center' my={16}>Sign in to your studio account</Title>
+// //                 <TextInput w={320} my={12} mx='auto' id='input-email' label='Email address' type='email' placeholder="Enter you'r email address" value={email} onChange={(event) => setEmail(event.target.value)} />
+// //                 <TextInput w={320} my={12} mx='auto' id='input-password' label='Password' type='password' placeholder="Enter you'r password" value={password} onChange={(event) => setPassword(event.target.value)}/>
+// //                 <Text size={14} ml='auto' align='right' w='full'>
+// //                     <Link to='/'>Forgot Password?</Link>
+// //                 </Text>
+// //                 <Text size={14} align='center'>No account?<Link to='/'>Register now</Link></Text>
+// //                 <Center my={12}>
+// //                     <Button variant='filled' id='button-signin' color='primary' disabled={!buttonEnabled} onClick={validateSignIn}>Sign in</Button>
+// //                 </Center>
+// //             </Flex>
+// //             <Bottombar />
+// //         </>
+// //     );
+// // }
+
+// // export default Signin;
+
+
+
+import {TextInput, Title, Text, Button, Center, Flex, Overlay, Modal, Notification, Container} from "@mantine/core";
 import Navbar from "../components/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import Bottombar from "../components/Bottombar";
-import { useViewportSize } from "@mantine/hooks";
-import logo from '../assets/logo-no-background.png';
-import { FaAngleDown } from 'react-icons/fa6';
+import {useDisclosure, useViewportSize} from "@mantine/hooks";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+import {Sha256} from "@aws-crypto/sha256-js";
+import {Buffer} from 'buffer';
+import Cookies from "universal-cookie";
 
-function Signin() {
-  const navigate = useNavigate();
-  const { width, height } = useViewportSize();
+function Signin(){
+    const navigate = useNavigate();
+    const { width, height } = useViewportSize();
+    const [overlayVisible, setOverlayVisible] = useState(false);
+    const [overlayClosable, setOverlayClosable] = useState(false);
 
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+    /* Managining the modal */
+    const [opened, { open, close }] = useDisclosure(false);
 
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
+    const [email, setEmail] = useState('sunilperera@gmail.com');
+    const [password, setPassword] = useState('');
 
-  function validateForm() {
-    const newErrors = { email: "", password: "" };
+    const [buttonEnabled, setButtonEnabled] = useState(true);
 
-    if (!formData.email) {
-      newErrors.email = "Email address is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Invalid email address";
+    /* Managing modal elements */
+    const [modalColor, setModalColor] = useState('green.9');
+    const [modalText, setModalText] = useState('')
+
+    /* Checking the validity of email and password */
+    useEffect(() => {
+        const emailReg = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+
+        if(!emailReg.test(email)){
+            /* Email not in the correct pattern */
+            setButtonEnabled(false);
+        }else if(password === '' || password === null){
+            /* Empty password */
+            setButtonEnabled(false);
+        } else {
+            setButtonEnabled(true);
+        }
+    }, [email, password]);
+
+    /* Send the request and obtain jwt token */
+    async function validateSignIn(){
+        /* Display the overlay */
+        setOverlayVisible(true);
+        setOverlayClosable(false);
+        open();
+
+        setModalColor('green.9');
+        setModalColor('Please wait as we checking your account. Almost there..');
+
+        /* Creating hash for the password using SHA-256 */
+        let hash = new Sha256();
+        hash.update(password)
+        const hashedPassword = await hash.digest();
+        const hashedPasswordStr = Buffer.from(hashedPassword).toString('hex');
+
+        /* Axios call to the backend for authentication */
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
+            email: email,
+            password: hashedPasswordStr
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((response) => {
+            /* User got authenticated */
+            setOverlayClosable(true);
+            setModalText('Success! You\'re successfully signed in');
+            setModalColor('green.9');
+
+            /* Saving the access token in cookies */
+            const cookie = new Cookies();
+            cookie.set('Access-Token', response.data.access_token);
+
+            /* Hiding the success modal */
+            setTimeout(() => {
+                closeModal();
+                setModalColor('green.9');
+                setModalColor('');
+
+                /* Redirect to the home page */
+                navigate('/dashboard');
+            }, 3000);
+        })
+            .catch((err) => {
+                console.log(err);
+                console.log('User not authenticated!');
+            })
     }
 
-    if (!formData.password) {
-      newErrors.password = "Password is required";
+    /* Closing the overlay */
+    function closeModal(){
+        close();
     }
 
-    setErrors(newErrors);
-
-    // Return true if there are no errors, false otherwise
-    return Object.values(newErrors).every((error) => error === "");
-  }
-
-  function handleSubmit() {
-    const isValid = validateForm();
-
-    if (isValid) {
-      // Perform form submission logic here
-      console.log("Form is valid. Submitting...");
-      // Replace the above console.log with your logic to handle form submission
-    }
-  }
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  }
-
-  return (
-    <>
-    <Flex h={64} align='center' justify='space-between' bg='#e9edff'>
-         {/* Logo container */}
-         <Flex ml={24} p={12}>
-             {/* <Image maw={36} src={logo} alt='OneId logo'/> */}
-         </Flex>
-
-         {/* Menu Container */}
-         <Flex align='center'>
-             {/* Language selector */}
-            <Container>
-                <Menu>
-                    <Menu.Target>
-                        <Button color='primary' variant='white' rightIcon={<FaAngleDown />}>English</Button>
-                    </Menu.Target>
-                    <Menu.Dropdown>
-                        <Menu.Label>Select language</Menu.Label>
-                        <Menu.Item>English</Menu.Item>
-                        <Menu.Item>Sinhala</Menu.Item>
-                        <Menu.Item>Tamil</Menu.Item>
-                    </Menu.Dropdown>
-                </Menu>
-            </Container>
-      </Flex>
-      </Flex>
-
-
-    {/* <Navbar showProfileButton={false} /> */}
-    {/* <Navbar showProfileButton={true} /> */}
-    
-
-      {/* <Navbar /> */}
-      {/* Main container which contains Sign in page */}
-      <Flex
-        direction="column"
-        align="center"
-        justify="center"
-        w={width * 0.4}
-        h={height - 200}
-        py="auto"
-        mx="auto"
-      >
-        <Title order={1} align="center" my={40}>
-          Sign in to your account
-        </Title>
-        
-        <TextInput
-          w={320}
-          my={12}
-          mx="auto"
-          label="Email address"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          error={errors.email}
-          placeholder="sunilperera@gmail.com"
-        />
-        <TextInput
-          w={320}
-          my={12}
-          mx="auto"
-          label="Password"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          error={errors.password}
-        />
-        {/* <Text size={14} ml="auto" align="right" w="full">
-          <Link to="/">Forgot Password?</Link>
-        </Text> */}
-        <Flex justify="space-between" w="320px" my={12} mx="auto">
-          {/* The "Forgot Password?" link with custom styling */}
-          <Text size={14} align="right" style={{ marginLeft: "200px" }}>
-            <Link to="/">Forgot Password?</Link>
-          </Text>
-          </Flex>
-        
-        <Center my={12}>
-          {/* Use Link to wrap the button */}
-          {/* <Link to="/requests"> */}
-            <Button variant="filled" color="#758BFD" onClick={handleSubmit}>
-            <Link to="/dashboard" style={{ textDecoration: "none", color: "white" }}>Sign in</Link>
-            </Button>
-          {/* </Link> */}
-        </Center>
-      </Flex>
-      <Bottombar />
-    </>
-  );
+    return (
+        <>
+            { overlayVisible &&
+                 <Modal opened={opened} onClose={close} withCloseButton={false} closeOnClickOutside={overlayClosable} centered>
+                     <Flex direction='row' align='center' justify='center'>
+                     <Title weight='normal' ml={4} order={4} align='center' color={modalColor}>{modalText}</Title>
+                     </Flex>
+                 </Modal>
+            }
+            {/* <Navbar /> */}
+            {/* Main container which contains Sign in page */}
+            <Flex direction='column' align='center' justify='center' w={width * 0.4} h={height - 96} py='auto' mx='auto' >
+                <Title order={1} align='center' my={16}>Sign in to your Government Account</Title>
+                <TextInput w={320} my={12} mx='auto' id='input-email' label='Email address' type='email' placeholder="Enter you'r email address" value={email} onChange={(event) => setEmail(event.target.value)} />
+                <TextInput w={320} my={12} mx='auto' id='input-password' label='Password' type='password' placeholder="Enter you'r password" value={password} onChange={(event) => setPassword(event.target.value)}/>
+                <Text size={14} ml='auto' align='right' w='full'>
+                    <Link to='/'>Forgot Password?</Link>
+                </Text>
+                <Text size={14} align='center'>No account?<Link to='/'>Register now</Link></Text>
+                <Center my={12}>
+                    <Button variant='filled' id='button-signin' color='primary' disabled={!buttonEnabled} onClick={validateSignIn}>Sign in</Button>
+                </Center>
+            </Flex>
+            <Bottombar />
+        </>
+    );
 }
 
 export default Signin;
-
-
