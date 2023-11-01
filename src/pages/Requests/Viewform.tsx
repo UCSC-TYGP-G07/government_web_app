@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextInput, Checkbox, Button, Group, Box, Title, Flex, Container, Avatar, Menu, Paper, Modal } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import Navbar from "../../components/Navbar";
@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Bottombar from "../../components/Bottombar";
 import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 import img from "../../assets/masha.jpeg";
+import axios from 'axios';
+import { getAccessToken } from '../../utils';
 
 
 function Viewform() {
@@ -35,6 +37,30 @@ function Viewform() {
   const closeImageModal = () => {
     setImageModalOpen(false);
   };
+
+  const [nicRequests, setNICRequests] = useState<NICRequest[] | null>(null);
+
+  useEffect(() => {
+    getNICRequests();
+  }, []);
+
+  async function getNICRequests(){
+    const accessToken = getAccessToken();
+
+    if (accessToken) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    }
+
+    await (await axios.get('http://localhost:3000/api/request/nic/')
+    .then(response => {
+      const nicRequest = response.data;
+      setNICRequests(nicRequest);
+    }));
+  }
+
+  useEffect(() => {
+    console.log(nicRequests);
+  }, [nicRequests]);
 
   return (
     <>
@@ -67,6 +93,7 @@ function Viewform() {
         onSubmit={form.onSubmit((values) => console.log(values))}>
           <div style={{ flex: 1}}>
           <TextInput style={{ paddingBottom: 30, width: '350px' }}
+            // value={a}
             label="Full Name"
             placeholder="John Doe"
             readOnly
@@ -74,6 +101,7 @@ function Viewform() {
             {...form.getInputProps("name")}
           />
           <TextInput style={{ paddingBottom: 30, width: '350px', color: 'black'}}
+            // value={data.district}
             label="District"
             placeholder=" Colombo"
             readOnly
@@ -166,6 +194,43 @@ function Viewform() {
     </Flex>
     </>
   );
+}
+
+export interface NICRequest{
+  request_id: string;
+        birthcert_no: string;
+        birthcert_url: string;
+        pid_type: string;
+        req_date: string;
+        req_status: string;
+        userId: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+        civilStatus: string;
+        phoneNumber: string;
+        birthPlace: string;
+        occupation: string;
+        gender: string;
+        dob: string;
+        postalCode: string;
+        permanentAddress: string;
+        appUser: AppUser;
+}
+
+interface AppUser{
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  civilStatus: string;
+  phoneNumber: string;
+  birthPlace: string;
+  occupation: string;
+  gender: string;
+  dob: string;
+  postalCode: string;
+  permanentAddress: string;
 }
 
 export default Viewform;

@@ -17,12 +17,14 @@ import {
 import Navbar from "../../components/Navbar";
 import Bottombar from "../../components/Bottombar";
 import { useViewportSize } from "@mantine/hooks";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
-
+import { getAccessToken } from '../../utils';
+import axios from 'axios';
 import "../../styles/styles.css";
+// import { NICRequest } from "./Viewform";
 
 
 interface TableData {
@@ -38,6 +40,49 @@ function Index() {
 const [segValue, setSegValue] = useState("normal");
 const navigate = useNavigate();
 
+
+const [nicRequests, setNICRequests] = useState<NICRequest[] | null>(null);
+
+  useEffect(() => {
+    getNICRequests();
+  }, []);
+
+  async function getNICRequests(){
+    const accessToken = getAccessToken();
+
+    if (accessToken) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    }
+
+    await (await axios.get('http://localhost:3000/api/request/nic/')
+    .then(response => {
+      const nicRequest = response.data;
+      setNICRequests(nicRequest);
+    }));
+  }
+
+  // const getResponse = async () => {
+  //   const response = await axios.get("/nicRequests");
+  //    {
+  //     let i = 1;
+  //     let resdata = response.data._embedded.nicRequests;
+  //     resdata.forEach((element) => {
+  //       element.action = 1;
+  //       element.index = i;
+  //       i++;
+  //     });
+  //     setNICRequests(resdata);
+  //     console.log(resdata);
+  //   } 
+  //   return response;
+
+  useEffect(() => {
+    console.log(nicRequests);
+  }, [nicRequests]);
+
+
+
+
 const normalRequests: TableData[] = [
   { Name: "Masha Nilushi", District: "Colombo", Status: "NIC", Contact: "0779025068", Email: "mashanilu@gmail.com" },
   { Name: "Ramindu Ramsith Walgama",District: "Galle", Status: "NIC", Contact: "0765419064", Email: "ramindu2000@gmail.com"},
@@ -45,10 +90,7 @@ const normalRequests: TableData[] = [
   { Name: "Hiroshini Ovitigala",District: "Gampaha", Status: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
   { Name: "Hiroshini Ovitigala",District: "Gampaha", Status: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
   { Name: "Hiroshini Ovitigala",District: "Gampaha", Status: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
-  // { Name: "Hiroshini Ovitigala",District: "Gampaha", Status: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
   
-
-  // Add more data for normal requests
 ];
 
 const expeditedRequests: TableData[] = [
@@ -105,53 +147,10 @@ return (
       </Center>
       <Paper className="responsive-table-container">
 
-      {/* style={{padding: 20,
-     marginLeft: -95,
-     minWidth: 1300,
-     display: "flex",
-     flexDirection: "column",
-     backgroundColor: '#ffffff',
-     boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
-     }}  >  */}
-      {/* <Flex
-        align="center"
-        justify="center"
-        direction="column"
-        my={20}
-        style={{ borderRadius: 10, overflowX: 'auto' }}
-      > */}
+    
   <table className="responsive-table">
 
-  {/* <table style={{ minWidth: 1000, width: '100%', borderCollapse: 'collapse' }}> */}
-    {/* <thead style={{fontSize: 20}}>
-      <tr>
-        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Name</th>
-        <th style={{ padding: '10px 20px', textAlign: 'left' }}>District</th>
-        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Status</th>
-        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Contact</th>
-        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Email</th>
-        <th style={{ padding: '10px 20px', textAlign: 'left' }}></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {selectedTabData.map((row, index) => (
-        <tr key={index}>
-          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Name}</td>
-          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.District}</td>
-          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Status}</td>
-          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Contact}</td>
-          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Email}</td>
-          <td style={{ padding: '40px 20px 20px', textAlign: 'left' }}>
-            <div style={{ marginTop: -25 }}>
-              <Button variant="filled" color="primary.7" onClick={() => navigate('/form')}>
-                Review
-              </Button>
-            </div>
-          </td>
-        </tr>
-      ))}
-    </tbody> */}
+ 
      <thead>
                 <tr>
                   <th>Name</th>
@@ -194,6 +193,44 @@ return (
   </>
 );
 }
+
+export interface NICRequest{
+  request_id: string;
+        birthcert_no: string;
+        birthcert_url: string;
+        pid_type: string;
+        req_date: string;
+        req_status: string;
+        userId: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+        civilStatus: string;
+        phoneNumber: string;
+        birthPlace: string;
+        occupation: string;
+        gender: string;
+        dob: string;
+        postalCode: string;
+        permanentAddress: string;
+        appUser: AppUser;
+}
+
+interface AppUser{
+  userId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  civilStatus: string;
+  phoneNumber: string;
+  birthPlace: string;
+  occupation: string;
+  gender: string;
+  dob: string;
+  postalCode: string;
+  permanentAddress: string;
+}
+
 
 export default Index;
 
