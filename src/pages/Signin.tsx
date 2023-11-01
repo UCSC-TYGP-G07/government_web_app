@@ -192,7 +192,8 @@ function Signin(){
         const hashedPasswordStr = Buffer.from(hashedPassword).toString('hex');
 
         /* Axios call to the backend for authentication */
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, {
+        await axios.post(`
+        http://localhost:3000/api/auth/login`, {
             email: email,
             password: hashedPasswordStr
         }, {
@@ -207,8 +208,11 @@ function Signin(){
             setModalColor('green.9');
 
             /* Saving the access token in cookies */
-            const cookie = new Cookies();
-            cookie.set('Access-Token', response.data.access_token);
+            // const cookie = new Cookies();
+            // cookie.set('Access-Token', response.data.access_token);
+
+            localStorage.setItem('Access-Token', response.data.access_token);
+
 
             /* Hiding the success modal */
             setTimeout(() => {

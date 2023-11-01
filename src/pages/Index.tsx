@@ -58,7 +58,7 @@ function Index(){
                         {/* <Button variant='light' color='primary' mx={6}>Learn ICAO&nbsp;<FaSquareArrowUpRight/></Button> */}
                         { !user && <Button variant='filled' color='primary' mx={6} onClick={() => navigate('/signin')}>Sign in&nbsp;<FaCircleUser/></Button> }
                         { user && <>
-                            <Button variant='filled' color='primary' mx={6} onClick={() => navigate('/reference')}>Choose image&nbsp;<FaArrowRight/></Button>
+                            <Button variant='filled' color='primary' mx={6} onClick={() => navigate('/dashboard')}>Dashboard&nbsp;<FaArrowRight/></Button>
                             </>
                         }
                     </Flex>
