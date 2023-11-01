@@ -31,7 +31,6 @@ const IdentificationCard: React.FC<IdentificationCardProps> = ({
 
 <NavbarSimpleColored />
 
-{/* <Navbar showProfileButton={true} /> */}
 <Navbar showProfileButton={true}  />
 
 
@@ -45,7 +44,7 @@ const IdentificationCard: React.FC<IdentificationCardProps> = ({
           <img
           src={img}
           alt="User's Photo"
-          style={{ width: '20%', height: '40%', objectFit: 'cover', borderRadius: '6px', marginTop: '30px', marginLeft: '10px' }}
+          style={{ width: '20%', height: '40%', objectFit: 'cover', borderRadius: '6px', marginTop: '3//0px', marginLeft: '10px' }}
         />
         <br /><br />
             {/* Front view card content */}

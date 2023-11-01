@@ -13,4 +13,46 @@
       white-space: nowrap; /* Prevent text wrapping */
     }
   }
+
+
+
+  /* Add styles for a responsive table */
+.responsive-table-container {
+  overflow-x: auto;
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.responsive-table th,
+.responsive-table td {
+  text-align: left;
+  padding: 20px;
+}
+
+/* Adjust styles for small screens */
+@media (max-width: 600px) {
+  .responsive-table th,
+  .responsive-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .responsive-table th {
+    font-weight: bold;
+  }
+}
+
+
+
+.responsive-container {
+  width: 100%;
+  padding: 20px 20px 0 100px; /* Adjust padding as needed */
+}
   

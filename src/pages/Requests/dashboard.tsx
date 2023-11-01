@@ -86,46 +86,48 @@ const Dashboard: React.FC = () => {
         </tbody>
     </Table>
   </div>
+
   <div style={{ display: 'flex', flexDirection: 'row', marginLeft: 50 }}>
   {/* Left side: Pie Chart */}
-  <div style={{ flex: 1, textAlign: 'center', width: '450px' }}>
+  {/* <div style={{ flex: 1, textAlign: 'center', width: '450px' }}>
     <Card shadow="md" padding="md">
       <Text align="center" size="md">
         <h2>Pie Chart</h2>
       </Text>      
     </Card>
     <Image maw={450} src={chart} alt='Pie Chart'/>
-  </div>
+  </div> */}
 
   {/* Right side: Legends */}
-  <div style={{ display: 'flex', flexDirection: 'column', marginTop: '150px', marginLeft: '40px' }}>
+  {/* <div style={{ display: 'flex', flexDirection: 'column', marginTop: '150px', marginLeft: '40px' }}> */}
     {/* Legend for Pending Requests */}
-    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+    {/* <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}> */}
       {/* Colored indicator */}
-      <div style={{ width: '16px', height: '16px', backgroundColor: '#27187E', marginRight: '5px' }}></div>
+      {/* <div style={{ width: '16px', height: '16px', backgroundColor: '#27187E', marginRight: '5px' }}></div>
       <Text>Pending Requests</Text>
-    </div>
+    </div> */}
     {/* Legend for In Progress Requests */}
-    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+    {/* <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}> */}
       {/* Colored indicator */}
-      <div style={{ width: '16px', height: '16px', backgroundColor: '#758BFD', marginRight: '5px' }}></div>
+      {/* <div style={{ width: '16px', height: '16px', backgroundColor: '#758BFD', marginRight: '5px' }}></div>
       <Text>In Progress Requests</Text>
-    </div>
+    </div> */}
     {/* Legend for Completed Requests */}
-    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+    {/* <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}> */}
       {/* Colored indicator */}
-      <div style={{ width: '16px', height: '16px', backgroundColor: '#FF8600', marginRight: '5px' }}></div>
+      {/* <div style={{ width: '16px', height: '16px', backgroundColor: '#FF8600', marginRight: '5px' }}></div>
       <Text>Completed Requests</Text>
-    </div>
+    </div> */}
     {/* Legend for Rejected Requests */}
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    {/* <div style={{ display: 'flex', alignItems: 'center' }}> */}
       {/* Colored indicator */}
-      <div style={{ width: '16px', height: '16px', backgroundColor: '#F1F2F6', marginRight: '5px' }}></div>
+      {/* <div style={{ width: '16px', height: '16px', backgroundColor: '#F1F2F6', marginRight: '5px' }}></div>
       <Text>Rejected Requests</Text>
-    </div>
-  </div>
-</div>
+    </div> */}
+  {/* </div>
+</div> */}
 
+</div>
 </div>     
       </Container>
     

@@ -22,12 +22,14 @@ import { FaArrowRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 
+import "../../styles/styles.css";
+
 
 interface TableData {
 
 Name: string;
 District: string;
-Type: string;
+Status: string;
 Contact: string;
 Email: string;
 }
@@ -37,24 +39,23 @@ const [segValue, setSegValue] = useState("normal");
 const navigate = useNavigate();
 
 const normalRequests: TableData[] = [
-  { Name: "Masha Nilushi", District: "Colombo", Type: "NIC", Contact: "0779025068", Email: "mashanilu@gmail.com" },
-  { Name: "Ramindu Ramsith Walgama",District: "Galle", Type: "NIC", Contact: "0765419064", Email: "ramindu2000@gmail.com"},
-  { Name: "Sandul Renuja Galappaththi",District: "Galle", Type: "NIC", Contact: "0779035678", Email: "renusandul@gmail.com"},
-  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
-  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
-  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
-  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
-  { Name: "Hiroshini Ovitigala",District: "Gampaha", Type: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
+  { Name: "Masha Nilushi", District: "Colombo", Status: "NIC", Contact: "0779025068", Email: "mashanilu@gmail.com" },
+  { Name: "Ramindu Ramsith Walgama",District: "Galle", Status: "NIC", Contact: "0765419064", Email: "ramindu2000@gmail.com"},
+  { Name: "Sandul Renuja Galappaththi",District: "Galle", Status: "NIC", Contact: "0779035678", Email: "renusandul@gmail.com"},
+  { Name: "Hiroshini Ovitigala",District: "Gampaha", Status: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
+  { Name: "Hiroshini Ovitigala",District: "Gampaha", Status: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
+  { Name: "Hiroshini Ovitigala",District: "Gampaha", Status: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
+  // { Name: "Hiroshini Ovitigala",District: "Gampaha", Status: "NIC", Contact: "0778945036", Email: "ovitigala99@gmail.com"},
   
 
   // Add more data for normal requests
 ];
 
 const expeditedRequests: TableData[] = [
-  { Name: "Mohomed Izzath",District: "Colombo", Type: "NIC", Contact: "0775213697", Email: "izzath2001@gmail.com" },
-  { Name: "Madusha Tharindi Silva",District: "Ahungalla", Type: "NIC", Contact: "0769951448", Email: "tharindi@gmail.com" },
-  { Name: "Kimuthu Kisal Weerasinghe",District: "Polonnaruwa", Type: "NIC", Contact: "0781203654", Email: "kimu99@gmail.com"},
-  { Name: "Nirman Sankalpana Manchanaka",District: "Galle", Type: "NIC", Contact: "0715423967", Email: "nirmansankalapana@gmail.com"},
+  { Name: "Mohomed Izzath",District: "Colombo", Status: "NIC", Contact: "0775213697", Email: "izzath2001@gmail.com" },
+  { Name: "Madusha Tharindi Silva",District: "Ahungalla", Status: "NIC", Contact: "0769951448", Email: "tharindi@gmail.com" },
+  { Name: "Kimuthu Kisal Weerasinghe",District: "Polonnaruwa", Status: "NIC", Contact: "0781203654", Email: "kimu99@gmail.com"},
+  { Name: "Nirman Sankalpana Manchanaka",District: "Galle", Status: "NIC", Contact: "0715423967", Email: "nirmansankalapana@gmail.com"},
  
 
   // Add more data for expedited requests
@@ -102,27 +103,31 @@ return (
           }}
         />
       </Center>
-      <Paper style={{padding: 20,
+      <Paper className="responsive-table-container">
+
+      {/* style={{padding: 20,
      marginLeft: -95,
      minWidth: 1300,
      display: "flex",
      flexDirection: "column",
      backgroundColor: '#ffffff',
      boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
-     }}  > 
-      <Flex
+     }}  >  */}
+      {/* <Flex
         align="center"
         justify="center"
         direction="column"
         my={20}
         style={{ borderRadius: 10, overflowX: 'auto' }}
-      >
-  <table style={{ minWidth: 1000, width: '100%', borderCollapse: 'collapse' }}>
-    <thead style={{fontSize: 20}}>
+      > */}
+  <table className="responsive-table">
+
+  {/* <table style={{ minWidth: 1000, width: '100%', borderCollapse: 'collapse' }}> */}
+    {/* <thead style={{fontSize: 20}}>
       <tr>
         <th style={{ padding: '10px 20px', textAlign: 'left' }}>Name</th>
         <th style={{ padding: '10px 20px', textAlign: 'left' }}>District</th>
-        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Type</th>
+        <th style={{ padding: '10px 20px', textAlign: 'left' }}>Status</th>
         <th style={{ padding: '10px 20px', textAlign: 'left' }}>Contact</th>
         <th style={{ padding: '10px 20px', textAlign: 'left' }}>Email</th>
         <th style={{ padding: '10px 20px', textAlign: 'left' }}></th>
@@ -134,7 +139,7 @@ return (
         <tr key={index}>
           <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Name}</td>
           <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.District}</td>
-          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Type}</td>
+          <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Status}</td>
           <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Contact}</td>
           <td style={{ padding: '10px 20px 20px', textAlign: 'left' }}>{row.Email}</td>
           <td style={{ padding: '40px 20px 20px', textAlign: 'left' }}>
@@ -146,9 +151,41 @@ return (
           </td>
         </tr>
       ))}
-    </tbody>
+    </tbody> */}
+     <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>District</th>
+                  <th>Status</th>
+                  <th>Contact</th>
+                  <th>Email</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {selectedTabData.map((row, index) => (
+                  <tr key={index}>
+                    <td>{row.Name}</td>
+                    <td>{row.District}</td>
+                    <td>{row.Status}</td>
+                    <td>{row.Contact}</td>
+                    <td>{row.Email}</td>
+                    <td>
+                      <Button
+                        variant="filled"
+                        color="primary.7"
+                        onClick={() => navigate("/form")}
+                      >
+                        Review
+                      </Button>
+                    </td>
+                  </tr>
+                   ))}
+                   </tbody>
+    
   </table>
-</Flex>
+{/* </Flex> */}
 
       </Paper>
       </Container>

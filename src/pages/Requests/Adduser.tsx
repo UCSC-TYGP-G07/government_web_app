@@ -3,6 +3,7 @@ import { Container, Paper, Input, Button, TextInput } from '@mantine/core';
 import Navbar from "../../components/Navbar";
 import { NavbarSimpleColored } from '../../components/NavbarSimpleColored';
 
+import '../../styles/styles.css'
 
 const Adduser: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -19,8 +20,10 @@ const Adduser: React.FC = () => {
 <NavbarSimpleColored />
     {/* <Navbar showProfileButton={true} /> */}
     <Navbar showProfileButton={true} />
-<div style={{width: 1000, marginLeft: 600, marginTop: 100}}>
-    <Container size="md" mt={50}>
+{/* <div style={{width: 1000, marginLeft: 600, marginTop: 100}}> */}
+   
+   <div className="responsive-container">
+    <Container size="md" mt={50} >
       <Paper
         style={{ maxWidth: 400, margin: '0 auto', padding: '20px' }} // Adjust padding here
         shadow="md" 
